@@ -17,6 +17,7 @@ private:
     string localAddress_;
     TCPSocket *socket_;   // our main listening socket
     TCPSocketMap socketMap_; // maps of sockets we maintain
+    std::set<std::string> peerList;
 
 protected:
 
@@ -28,6 +29,8 @@ protected:
     virtual int numInitStages(void) const {
         return 4;
     }
+
+    virtual std::string getPeersAsString();
 
     virtual void handleMessage(cMessage *msg);
 

@@ -1,6 +1,7 @@
 #include "ClientServerAppMsg_m.h"
 #include "ServerApp.h"
 #include "IPvXAddressResolver.h"
+#include <sstream>
 
 Define_Module(ServerApp)
 
@@ -95,6 +96,8 @@ void ServerApp::handleMessage(cMessage *msg) {
 
         // now save this socket in our map
         this->socketMap_.addSocket(new_socket);
+
+        this->peerList.insert(new_socket->getRemoteAddress().str());
 
         // process the message
         new_socket->processMessage(msg);
@@ -194,11 +197,14 @@ void ServerApp::sendResponse(int connId, const char *id, unsigned long size) {
         CS_Resp *resp = new CS_Resp();
         resp->setType((int) CS_RESPONSE);
         resp->setId(id);
-        resp->setDataArraySize(size);
+        std::string result = this->getPeersAsString();
+        resp->setDataArraySize(result.length());
+        for (int i=0; i < result.length(); ++i)
+            resp->setData(i, result[i]);
         // need to set the byte length else nothing gets sent as I found the hard way
 
         // TODO What should this size be?
-        resp->setByteLength(sizeof(CS_Resp) + size);
+        resp->setByteLength(sizeof(CS_Resp) + result.length());
         socket->send(resp);
     }
 
@@ -211,5 +217,15 @@ void ServerApp::setStatusString(const char *s) {
         getDisplayString ().setTagArg ("t", 0, s);
         bubble (s);
     }
+}
+
+std::string ServerApp::getPeersAsString(){
+    std::stringstream ss;
+    std::ostream_iterator<std::string> output(ss, " ");
+    std::copy(peerList.begin(), peerList.end(), output);
+    std::string result = ss.str();
+    result.pop_back();
+    return result;
+
 }
 

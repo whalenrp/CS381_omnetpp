@@ -1,14 +1,14 @@
 version 2
-run General-0-20140226-10:20:59-94526
+run General-0-20140226-16:20:31-96164
 attr configname General
-attr datetime 20140226-10:20:59
+attr datetime 20140226-16:20:31
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvars2 $repetition=0
 attr measurement ""
 attr network ClientServerNetwork
-attr processid 94526
+attr processid 96164
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -45,145 +45,61 @@ attr title  "queue length, vector"
 vector 62  ClientServerNetwork.router.ppp[3].ppp  txState:vector  ETV
 attr interpolationmode  sample-hold
 attr title  "tx state, vector"
-vector 72  ClientServerNetwork.router.ppp[4].queue  queueLength:vector  ETV
+vector 79  ClientServerNetwork.client[0].ppp[0].queue  queueLength:vector  ETV
 attr interpolationmode  sample-hold
 attr title  "queue length, vector"
-vector 73  ClientServerNetwork.router.ppp[4].ppp  txState:vector  ETV
+vector 80  ClientServerNetwork.client[0].ppp[0].ppp  txState:vector  ETV
 attr interpolationmode  sample-hold
 attr title  "tx state, vector"
-vector 83  ClientServerNetwork.router.ppp[5].queue  queueLength:vector  ETV
+vector 97  ClientServerNetwork.client[1].ppp[0].queue  queueLength:vector  ETV
 attr interpolationmode  sample-hold
 attr title  "queue length, vector"
-vector 84  ClientServerNetwork.router.ppp[5].ppp  txState:vector  ETV
+vector 98  ClientServerNetwork.client[1].ppp[0].ppp  txState:vector  ETV
 attr interpolationmode  sample-hold
 attr title  "tx state, vector"
-vector 94  ClientServerNetwork.router.ppp[6].queue  queueLength:vector  ETV
+vector 115  ClientServerNetwork.client[2].ppp[0].queue  queueLength:vector  ETV
 attr interpolationmode  sample-hold
 attr title  "queue length, vector"
-vector 95  ClientServerNetwork.router.ppp[6].ppp  txState:vector  ETV
+vector 116  ClientServerNetwork.client[2].ppp[0].ppp  txState:vector  ETV
 attr interpolationmode  sample-hold
 attr title  "tx state, vector"
-vector 105  ClientServerNetwork.router.ppp[7].queue  queueLength:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "queue length, vector"
-vector 106  ClientServerNetwork.router.ppp[7].ppp  txState:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "tx state, vector"
-vector 116  ClientServerNetwork.router.ppp[8].queue  queueLength:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "queue length, vector"
-vector 117  ClientServerNetwork.router.ppp[8].ppp  txState:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "tx state, vector"
-vector 127  ClientServerNetwork.router.ppp[9].queue  queueLength:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "queue length, vector"
-vector 128  ClientServerNetwork.router.ppp[9].ppp  txState:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "tx state, vector"
-vector 138  ClientServerNetwork.router.ppp[10].queue  queueLength:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "queue length, vector"
-vector 139  ClientServerNetwork.router.ppp[10].ppp  txState:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "tx state, vector"
-vector 156  ClientServerNetwork.client[0].ppp[0].queue  queueLength:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "queue length, vector"
-vector 157  ClientServerNetwork.client[0].ppp[0].ppp  txState:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "tx state, vector"
-vector 174  ClientServerNetwork.client[1].ppp[0].queue  queueLength:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "queue length, vector"
-vector 175  ClientServerNetwork.client[1].ppp[0].ppp  txState:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "tx state, vector"
-vector 192  ClientServerNetwork.client[2].ppp[0].queue  queueLength:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "queue length, vector"
-vector 193  ClientServerNetwork.client[2].ppp[0].ppp  txState:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "tx state, vector"
-vector 210  ClientServerNetwork.client[3].ppp[0].queue  queueLength:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "queue length, vector"
-vector 211  ClientServerNetwork.client[3].ppp[0].ppp  txState:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "tx state, vector"
-vector 228  ClientServerNetwork.client[4].ppp[0].queue  queueLength:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "queue length, vector"
-vector 229  ClientServerNetwork.client[4].ppp[0].ppp  txState:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "tx state, vector"
-vector 246  ClientServerNetwork.client[5].ppp[0].queue  queueLength:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "queue length, vector"
-vector 247  ClientServerNetwork.client[5].ppp[0].ppp  txState:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "tx state, vector"
-vector 264  ClientServerNetwork.client[6].ppp[0].queue  queueLength:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "queue length, vector"
-vector 265  ClientServerNetwork.client[6].ppp[0].ppp  txState:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "tx state, vector"
-vector 282  ClientServerNetwork.client[7].ppp[0].queue  queueLength:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "queue length, vector"
-vector 283  ClientServerNetwork.client[7].ppp[0].ppp  txState:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "tx state, vector"
-vector 300  ClientServerNetwork.client[8].ppp[0].queue  queueLength:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "queue length, vector"
-vector 301  ClientServerNetwork.client[8].ppp[0].ppp  txState:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "tx state, vector"
-vector 318  ClientServerNetwork.client[9].ppp[0].queue  queueLength:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "queue length, vector"
-vector 319  ClientServerNetwork.client[9].ppp[0].ppp  txState:vector  ETV
-attr interpolationmode  sample-hold
-attr title  "tx state, vector"
-vector 365  ClientServerNetwork.client[8].tcp  tcpRcvQueueBytes  ETV
-vector 352  ClientServerNetwork.client[8].tcp  "advertised window"  ETV
-vector 351  ClientServerNetwork.client[8].tcp  "receive window"  ETV
-vector 354  ClientServerNetwork.client[8].tcp  "sent ack"  ETV
-vector 297  ClientServerNetwork.client[8].ppp[0].queue  rcvdPk:vector(packetBytes)  ETV
+vector 162  ClientServerNetwork.client[0].tcp  tcpRcvQueueBytes  ETV
+vector 149  ClientServerNetwork.client[0].tcp  "advertised window"  ETV
+vector 148  ClientServerNetwork.client[0].tcp  "receive window"  ETV
+vector 151  ClientServerNetwork.client[0].tcp  "sent ack"  ETV
+vector 76  ClientServerNetwork.client[0].ppp[0].queue  rcvdPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr title  "received packets, vector(packetBytes)"
-vector 299  ClientServerNetwork.client[8].ppp[0].queue  queueingTime:vector  ETV
+vector 78  ClientServerNetwork.client[0].ppp[0].queue  queueingTime:vector  ETV
 attr interpolationmode  none
 attr title  "queueing time, vector"
-vector 306  ClientServerNetwork.client[8].ppp[0].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
+vector 85  ClientServerNetwork.client[0].ppp[0].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetReceivedFromUpper
 attr title  "packets received from higher layer, vector(packetBytes)"
-vector 302  ClientServerNetwork.client[8].ppp[0].ppp  txPk:vector(packetBytes)  ETV
+vector 81  ClientServerNetwork.client[0].ppp[0].ppp  txPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetSentToLower
 attr title  "packets transmitted, vector(packetBytes)"
-vector 119  ClientServerNetwork.router.ppp[8].ppp  rxPkOk:vector(packetBytes)  ETV
+vector 31  ClientServerNetwork.router.ppp[0].ppp  rxPkOk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, vector(packetBytes)"
-vector 123  ClientServerNetwork.router.ppp[8].ppp  passedUpPk:vector(packetBytes)  ETV
+vector 35  ClientServerNetwork.router.ppp[0].ppp  passedUpPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 135  ClientServerNetwork.router.ppp[10].queue  rcvdPk:vector(packetBytes)  ETV
+vector 58  ClientServerNetwork.router.ppp[3].queue  rcvdPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr title  "received packets, vector(packetBytes)"
-vector 137  ClientServerNetwork.router.ppp[10].queue  queueingTime:vector  ETV
+vector 60  ClientServerNetwork.router.ppp[3].queue  queueingTime:vector  ETV
 attr interpolationmode  none
 attr title  "queueing time, vector"
-vector 144  ClientServerNetwork.router.ppp[10].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
+vector 67  ClientServerNetwork.router.ppp[3].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetReceivedFromUpper
 attr title  "packets received from higher layer, vector(packetBytes)"
-vector 140  ClientServerNetwork.router.ppp[10].ppp  txPk:vector(packetBytes)  ETV
+vector 63  ClientServerNetwork.router.ppp[3].ppp  txPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetSentToLower
 attr title  "packets transmitted, vector(packetBytes)"
@@ -195,13 +111,13 @@ vector 17  ClientServerNetwork.server.ppp[0].ppp  passedUpPk:vector(packetBytes)
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 331  ClientServerNetwork.server.tcp  "rcvd seq"  ETV
-vector 332  ClientServerNetwork.server.tcp  "rcvd ack"  ETV
-vector 328  ClientServerNetwork.server.tcp  "advertised window"  ETV
-vector 326  ClientServerNetwork.server.tcp  "send window"  ETV
-vector 341  ClientServerNetwork.server.tcp  tcpRcvQueueBytes  ETV
-vector 327  ClientServerNetwork.server.tcp  "receive window"  ETV
-vector 330  ClientServerNetwork.server.tcp  "sent ack"  ETV
+vector 128  ClientServerNetwork.server.tcp  "rcvd seq"  ETV
+vector 129  ClientServerNetwork.server.tcp  "rcvd ack"  ETV
+vector 125  ClientServerNetwork.server.tcp  "advertised window"  ETV
+vector 123  ClientServerNetwork.server.tcp  "send window"  ETV
+vector 138  ClientServerNetwork.server.tcp  tcpRcvQueueBytes  ETV
+vector 124  ClientServerNetwork.server.tcp  "receive window"  ETV
+vector 127  ClientServerNetwork.server.tcp  "sent ack"  ETV
 vector 7  ClientServerNetwork.server.ppp[0].queue  rcvdPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr title  "received packets, vector(packetBytes)"
@@ -216,130 +132,14 @@ vector 12  ClientServerNetwork.server.ppp[0].ppp  txPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetSentToLower
 attr title  "packets transmitted, vector(packetBytes)"
-vector 141  ClientServerNetwork.router.ppp[10].ppp  rxPkOk:vector(packetBytes)  ETV
+vector 64  ClientServerNetwork.router.ppp[3].ppp  rxPkOk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, vector(packetBytes)"
-vector 145  ClientServerNetwork.router.ppp[10].ppp  passedUpPk:vector(packetBytes)  ETV
+vector 68  ClientServerNetwork.router.ppp[3].ppp  passedUpPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 113  ClientServerNetwork.router.ppp[8].queue  rcvdPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr title  "received packets, vector(packetBytes)"
-vector 115  ClientServerNetwork.router.ppp[8].queue  queueingTime:vector  ETV
-attr interpolationmode  none
-attr title  "queueing time, vector"
-vector 122  ClientServerNetwork.router.ppp[8].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetReceivedFromUpper
-attr title  "packets received from higher layer, vector(packetBytes)"
-vector 118  ClientServerNetwork.router.ppp[8].ppp  txPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToLower
-attr title  "packets transmitted, vector(packetBytes)"
-vector 303  ClientServerNetwork.client[8].ppp[0].ppp  rxPkOk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkOk
-attr title  "packets received OK, vector(packetBytes)"
-vector 307  ClientServerNetwork.client[8].ppp[0].ppp  passedUpPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToUpper
-attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 355  ClientServerNetwork.client[8].tcp  "rcvd seq"  ETV
-vector 356  ClientServerNetwork.client[8].tcp  "rcvd ack"  ETV
-vector 350  ClientServerNetwork.client[8].tcp  "send window"  ETV
-vector 353  ClientServerNetwork.client[8].tcp  "sent seq"  ETV
-vector 357  ClientServerNetwork.client[8].tcp  "unacked bytes"  ETV
-vector 333  ClientServerNetwork.server.tcp  "unacked bytes"  ETV
-vector 334  ClientServerNetwork.server.tcp  "rcvd dupAcks"  ETV
-vector 329  ClientServerNetwork.server.tcp  "sent seq"  ETV
-vector 369  ClientServerNetwork.client[8].tcp  "measured RTT"  ETV
-vector 370  ClientServerNetwork.client[8].tcp  "smoothed RTT"  ETV
-vector 371  ClientServerNetwork.client[8].tcp  RTTVAR  ETV
-vector 372  ClientServerNetwork.client[8].tcp  RTO  ETV
-vector 367  ClientServerNetwork.client[8].tcp  cwnd  ETV
-vector 358  ClientServerNetwork.client[8].tcp  "rcvd dupAcks"  ETV
-vector 413  ClientServerNetwork.client[6].tcp  tcpRcvQueueBytes  ETV
-vector 400  ClientServerNetwork.client[6].tcp  "advertised window"  ETV
-vector 399  ClientServerNetwork.client[6].tcp  "receive window"  ETV
-vector 402  ClientServerNetwork.client[6].tcp  "sent ack"  ETV
-vector 261  ClientServerNetwork.client[6].ppp[0].queue  rcvdPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr title  "received packets, vector(packetBytes)"
-vector 263  ClientServerNetwork.client[6].ppp[0].queue  queueingTime:vector  ETV
-attr interpolationmode  none
-attr title  "queueing time, vector"
-vector 270  ClientServerNetwork.client[6].ppp[0].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetReceivedFromUpper
-attr title  "packets received from higher layer, vector(packetBytes)"
-vector 266  ClientServerNetwork.client[6].ppp[0].ppp  txPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToLower
-attr title  "packets transmitted, vector(packetBytes)"
-vector 437  ClientServerNetwork.client[0].tcp  tcpRcvQueueBytes  ETV
-vector 424  ClientServerNetwork.client[0].tcp  "advertised window"  ETV
-vector 423  ClientServerNetwork.client[0].tcp  "receive window"  ETV
-vector 426  ClientServerNetwork.client[0].tcp  "sent ack"  ETV
-vector 153  ClientServerNetwork.client[0].ppp[0].queue  rcvdPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr title  "received packets, vector(packetBytes)"
-vector 155  ClientServerNetwork.client[0].ppp[0].queue  queueingTime:vector  ETV
-attr interpolationmode  none
-attr title  "queueing time, vector"
-vector 162  ClientServerNetwork.client[0].ppp[0].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetReceivedFromUpper
-attr title  "packets received from higher layer, vector(packetBytes)"
-vector 158  ClientServerNetwork.client[0].ppp[0].ppp  txPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToLower
-attr title  "packets transmitted, vector(packetBytes)"
-vector 97  ClientServerNetwork.router.ppp[6].ppp  rxPkOk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkOk
-attr title  "packets received OK, vector(packetBytes)"
-vector 101  ClientServerNetwork.router.ppp[6].ppp  passedUpPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToUpper
-attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 379  ClientServerNetwork.server.tcp  "rcvd seq"  ETV
-vector 380  ClientServerNetwork.server.tcp  "rcvd ack"  ETV
-vector 376  ClientServerNetwork.server.tcp  "advertised window"  ETV
-vector 374  ClientServerNetwork.server.tcp  "send window"  ETV
-vector 389  ClientServerNetwork.server.tcp  tcpRcvQueueBytes  ETV
-vector 375  ClientServerNetwork.server.tcp  "receive window"  ETV
-vector 378  ClientServerNetwork.server.tcp  "sent ack"  ETV
-vector 91  ClientServerNetwork.router.ppp[6].queue  rcvdPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr title  "received packets, vector(packetBytes)"
-vector 93  ClientServerNetwork.router.ppp[6].queue  queueingTime:vector  ETV
-attr interpolationmode  none
-attr title  "queueing time, vector"
-vector 100  ClientServerNetwork.router.ppp[6].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetReceivedFromUpper
-attr title  "packets received from higher layer, vector(packetBytes)"
-vector 96  ClientServerNetwork.router.ppp[6].ppp  txPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToLower
-attr title  "packets transmitted, vector(packetBytes)"
-vector 31  ClientServerNetwork.router.ppp[0].ppp  rxPkOk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkOk
-attr title  "packets received OK, vector(packetBytes)"
-vector 35  ClientServerNetwork.router.ppp[0].ppp  passedUpPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToUpper
-attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 451  ClientServerNetwork.server.tcp  "rcvd seq"  ETV
-vector 452  ClientServerNetwork.server.tcp  "rcvd ack"  ETV
-vector 448  ClientServerNetwork.server.tcp  "advertised window"  ETV
-vector 446  ClientServerNetwork.server.tcp  "send window"  ETV
-vector 461  ClientServerNetwork.server.tcp  tcpRcvQueueBytes  ETV
-vector 447  ClientServerNetwork.server.tcp  "receive window"  ETV
-vector 450  ClientServerNetwork.server.tcp  "sent ack"  ETV
 vector 25  ClientServerNetwork.router.ppp[0].queue  rcvdPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr title  "received packets, vector(packetBytes)"
@@ -354,70 +154,38 @@ vector 30  ClientServerNetwork.router.ppp[0].ppp  txPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetSentToLower
 attr title  "packets transmitted, vector(packetBytes)"
-vector 267  ClientServerNetwork.client[6].ppp[0].ppp  rxPkOk:vector(packetBytes)  ETV
+vector 82  ClientServerNetwork.client[0].ppp[0].ppp  rxPkOk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, vector(packetBytes)"
-vector 271  ClientServerNetwork.client[6].ppp[0].ppp  passedUpPk:vector(packetBytes)  ETV
+vector 86  ClientServerNetwork.client[0].ppp[0].ppp  passedUpPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 403  ClientServerNetwork.client[6].tcp  "rcvd seq"  ETV
-vector 404  ClientServerNetwork.client[6].tcp  "rcvd ack"  ETV
-vector 398  ClientServerNetwork.client[6].tcp  "send window"  ETV
-vector 401  ClientServerNetwork.client[6].tcp  "sent seq"  ETV
-vector 405  ClientServerNetwork.client[6].tcp  "unacked bytes"  ETV
-vector 159  ClientServerNetwork.client[0].ppp[0].ppp  rxPkOk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkOk
-attr title  "packets received OK, vector(packetBytes)"
-vector 163  ClientServerNetwork.client[0].ppp[0].ppp  passedUpPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToUpper
-attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 427  ClientServerNetwork.client[0].tcp  "rcvd seq"  ETV
-vector 428  ClientServerNetwork.client[0].tcp  "rcvd ack"  ETV
-vector 422  ClientServerNetwork.client[0].tcp  "send window"  ETV
-vector 425  ClientServerNetwork.client[0].tcp  "sent seq"  ETV
-vector 429  ClientServerNetwork.client[0].tcp  "unacked bytes"  ETV
-vector 509  ClientServerNetwork.client[1].tcp  tcpRcvQueueBytes  ETV
-vector 496  ClientServerNetwork.client[1].tcp  "advertised window"  ETV
-vector 495  ClientServerNetwork.client[1].tcp  "receive window"  ETV
-vector 498  ClientServerNetwork.client[1].tcp  "sent ack"  ETV
-vector 171  ClientServerNetwork.client[1].ppp[0].queue  rcvdPk:vector(packetBytes)  ETV
+vector 152  ClientServerNetwork.client[0].tcp  "rcvd seq"  ETV
+vector 153  ClientServerNetwork.client[0].tcp  "rcvd ack"  ETV
+vector 147  ClientServerNetwork.client[0].tcp  "send window"  ETV
+vector 150  ClientServerNetwork.client[0].tcp  "sent seq"  ETV
+vector 154  ClientServerNetwork.client[0].tcp  "unacked bytes"  ETV
+vector 210  ClientServerNetwork.client[1].tcp  tcpRcvQueueBytes  ETV
+vector 197  ClientServerNetwork.client[1].tcp  "advertised window"  ETV
+vector 196  ClientServerNetwork.client[1].tcp  "receive window"  ETV
+vector 199  ClientServerNetwork.client[1].tcp  "sent ack"  ETV
+vector 94  ClientServerNetwork.client[1].ppp[0].queue  rcvdPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr title  "received packets, vector(packetBytes)"
-vector 173  ClientServerNetwork.client[1].ppp[0].queue  queueingTime:vector  ETV
+vector 96  ClientServerNetwork.client[1].ppp[0].queue  queueingTime:vector  ETV
 attr interpolationmode  none
 attr title  "queueing time, vector"
-vector 180  ClientServerNetwork.client[1].ppp[0].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
+vector 103  ClientServerNetwork.client[1].ppp[0].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetReceivedFromUpper
 attr title  "packets received from higher layer, vector(packetBytes)"
-vector 176  ClientServerNetwork.client[1].ppp[0].ppp  txPk:vector(packetBytes)  ETV
+vector 99  ClientServerNetwork.client[1].ppp[0].ppp  txPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetSentToLower
 attr title  "packets transmitted, vector(packetBytes)"
-vector 381  ClientServerNetwork.server.tcp  "unacked bytes"  ETV
-vector 453  ClientServerNetwork.server.tcp  "unacked bytes"  ETV
-vector 533  ClientServerNetwork.client[4].tcp  tcpRcvQueueBytes  ETV
-vector 520  ClientServerNetwork.client[4].tcp  "advertised window"  ETV
-vector 519  ClientServerNetwork.client[4].tcp  "receive window"  ETV
-vector 522  ClientServerNetwork.client[4].tcp  "sent ack"  ETV
-vector 225  ClientServerNetwork.client[4].ppp[0].queue  rcvdPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr title  "received packets, vector(packetBytes)"
-vector 227  ClientServerNetwork.client[4].ppp[0].queue  queueingTime:vector  ETV
-attr interpolationmode  none
-attr title  "queueing time, vector"
-vector 234  ClientServerNetwork.client[4].ppp[0].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetReceivedFromUpper
-attr title  "packets received from higher layer, vector(packetBytes)"
-vector 230  ClientServerNetwork.client[4].ppp[0].ppp  txPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToLower
-attr title  "packets transmitted, vector(packetBytes)"
+vector 130  ClientServerNetwork.server.tcp  "unacked bytes"  ETV
 vector 42  ClientServerNetwork.router.ppp[1].ppp  rxPkOk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  rxPkOk
@@ -426,13 +194,13 @@ vector 46  ClientServerNetwork.router.ppp[1].ppp  passedUpPk:vector(packetBytes)
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 475  ClientServerNetwork.server.tcp  "rcvd seq"  ETV
-vector 476  ClientServerNetwork.server.tcp  "rcvd ack"  ETV
-vector 472  ClientServerNetwork.server.tcp  "advertised window"  ETV
-vector 470  ClientServerNetwork.server.tcp  "send window"  ETV
-vector 485  ClientServerNetwork.server.tcp  tcpRcvQueueBytes  ETV
-vector 471  ClientServerNetwork.server.tcp  "receive window"  ETV
-vector 474  ClientServerNetwork.server.tcp  "sent ack"  ETV
+vector 176  ClientServerNetwork.server.tcp  "rcvd seq"  ETV
+vector 177  ClientServerNetwork.server.tcp  "rcvd ack"  ETV
+vector 173  ClientServerNetwork.server.tcp  "advertised window"  ETV
+vector 171  ClientServerNetwork.server.tcp  "send window"  ETV
+vector 186  ClientServerNetwork.server.tcp  tcpRcvQueueBytes  ETV
+vector 172  ClientServerNetwork.server.tcp  "receive window"  ETV
+vector 175  ClientServerNetwork.server.tcp  "sent ack"  ETV
 vector 36  ClientServerNetwork.router.ppp[1].queue  rcvdPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr title  "received packets, vector(packetBytes)"
@@ -447,136 +215,859 @@ vector 41  ClientServerNetwork.router.ppp[1].ppp  txPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetSentToLower
 attr title  "packets transmitted, vector(packetBytes)"
-vector 382  ClientServerNetwork.server.tcp  "rcvd dupAcks"  ETV
-vector 377  ClientServerNetwork.server.tcp  "sent seq"  ETV
-vector 75  ClientServerNetwork.router.ppp[4].ppp  rxPkOk:vector(packetBytes)  ETV
+vector 131  ClientServerNetwork.server.tcp  "rcvd dupAcks"  ETV
+vector 126  ClientServerNetwork.server.tcp  "sent seq"  ETV
+vector 100  ClientServerNetwork.client[1].ppp[0].ppp  rxPkOk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, vector(packetBytes)"
-vector 79  ClientServerNetwork.router.ppp[4].ppp  passedUpPk:vector(packetBytes)  ETV
+vector 104  ClientServerNetwork.client[1].ppp[0].ppp  passedUpPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 547  ClientServerNetwork.server.tcp  "rcvd seq"  ETV
-vector 548  ClientServerNetwork.server.tcp  "rcvd ack"  ETV
-vector 544  ClientServerNetwork.server.tcp  "advertised window"  ETV
-vector 542  ClientServerNetwork.server.tcp  "send window"  ETV
-vector 557  ClientServerNetwork.server.tcp  tcpRcvQueueBytes  ETV
-vector 543  ClientServerNetwork.server.tcp  "receive window"  ETV
-vector 546  ClientServerNetwork.server.tcp  "sent ack"  ETV
-vector 454  ClientServerNetwork.server.tcp  "rcvd dupAcks"  ETV
-vector 449  ClientServerNetwork.server.tcp  "sent seq"  ETV
-vector 69  ClientServerNetwork.router.ppp[4].queue  rcvdPk:vector(packetBytes)  ETV
+vector 200  ClientServerNetwork.client[1].tcp  "rcvd seq"  ETV
+vector 201  ClientServerNetwork.client[1].tcp  "rcvd ack"  ETV
+vector 195  ClientServerNetwork.client[1].tcp  "send window"  ETV
+vector 198  ClientServerNetwork.client[1].tcp  "sent seq"  ETV
+vector 202  ClientServerNetwork.client[1].tcp  "unacked bytes"  ETV
+vector 166  ClientServerNetwork.client[0].tcp  "measured RTT"  ETV
+vector 167  ClientServerNetwork.client[0].tcp  "smoothed RTT"  ETV
+vector 168  ClientServerNetwork.client[0].tcp  RTTVAR  ETV
+vector 169  ClientServerNetwork.client[0].tcp  RTO  ETV
+vector 164  ClientServerNetwork.client[0].tcp  cwnd  ETV
+vector 155  ClientServerNetwork.client[0].tcp  "rcvd dupAcks"  ETV
+vector 178  ClientServerNetwork.server.tcp  "unacked bytes"  ETV
+vector 179  ClientServerNetwork.server.tcp  "rcvd dupAcks"  ETV
+vector 174  ClientServerNetwork.server.tcp  "sent seq"  ETV
+vector 214  ClientServerNetwork.client[1].tcp  "measured RTT"  ETV
+vector 215  ClientServerNetwork.client[1].tcp  "smoothed RTT"  ETV
+vector 216  ClientServerNetwork.client[1].tcp  RTTVAR  ETV
+vector 217  ClientServerNetwork.client[1].tcp  RTO  ETV
+vector 212  ClientServerNetwork.client[1].tcp  cwnd  ETV
+vector 203  ClientServerNetwork.client[1].tcp  "rcvd dupAcks"  ETV
+vector 258  ClientServerNetwork.client[2].tcp  tcpRcvQueueBytes  ETV
+vector 245  ClientServerNetwork.client[2].tcp  "advertised window"  ETV
+vector 244  ClientServerNetwork.client[2].tcp  "receive window"  ETV
+vector 247  ClientServerNetwork.client[2].tcp  "sent ack"  ETV
+vector 112  ClientServerNetwork.client[2].ppp[0].queue  rcvdPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr title  "received packets, vector(packetBytes)"
-vector 71  ClientServerNetwork.router.ppp[4].queue  queueingTime:vector  ETV
+vector 114  ClientServerNetwork.client[2].ppp[0].queue  queueingTime:vector  ETV
 attr interpolationmode  none
 attr title  "queueing time, vector"
-vector 78  ClientServerNetwork.router.ppp[4].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
+vector 121  ClientServerNetwork.client[2].ppp[0].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetReceivedFromUpper
 attr title  "packets received from higher layer, vector(packetBytes)"
-vector 74  ClientServerNetwork.router.ppp[4].ppp  txPk:vector(packetBytes)  ETV
+vector 117  ClientServerNetwork.client[2].ppp[0].ppp  txPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetSentToLower
 attr title  "packets transmitted, vector(packetBytes)"
-vector 605  ClientServerNetwork.client[9].tcp  tcpRcvQueueBytes  ETV
-vector 592  ClientServerNetwork.client[9].tcp  "advertised window"  ETV
-vector 591  ClientServerNetwork.client[9].tcp  "receive window"  ETV
-vector 594  ClientServerNetwork.client[9].tcp  "sent ack"  ETV
-vector 315  ClientServerNetwork.client[9].ppp[0].queue  rcvdPk:vector(packetBytes)  ETV
+vector 142  ClientServerNetwork.server.tcp  "measured RTT"  ETV
+vector 143  ClientServerNetwork.server.tcp  "smoothed RTT"  ETV
+vector 144  ClientServerNetwork.server.tcp  RTTVAR  ETV
+vector 145  ClientServerNetwork.server.tcp  RTO  ETV
+vector 140  ClientServerNetwork.server.tcp  cwnd  ETV
+vector 53  ClientServerNetwork.router.ppp[2].ppp  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 57  ClientServerNetwork.router.ppp[2].ppp  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 224  ClientServerNetwork.server.tcp  "rcvd seq"  ETV
+vector 225  ClientServerNetwork.server.tcp  "rcvd ack"  ETV
+vector 221  ClientServerNetwork.server.tcp  "advertised window"  ETV
+vector 219  ClientServerNetwork.server.tcp  "send window"  ETV
+vector 234  ClientServerNetwork.server.tcp  tcpRcvQueueBytes  ETV
+vector 220  ClientServerNetwork.server.tcp  "receive window"  ETV
+vector 223  ClientServerNetwork.server.tcp  "sent ack"  ETV
+vector 47  ClientServerNetwork.router.ppp[2].queue  rcvdPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr title  "received packets, vector(packetBytes)"
-vector 317  ClientServerNetwork.client[9].ppp[0].queue  queueingTime:vector  ETV
+vector 49  ClientServerNetwork.router.ppp[2].queue  queueingTime:vector  ETV
 attr interpolationmode  none
 attr title  "queueing time, vector"
-vector 324  ClientServerNetwork.client[9].ppp[0].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
+vector 56  ClientServerNetwork.router.ppp[2].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetReceivedFromUpper
 attr title  "packets received from higher layer, vector(packetBytes)"
-vector 320  ClientServerNetwork.client[9].ppp[0].ppp  txPk:vector(packetBytes)  ETV
+vector 52  ClientServerNetwork.router.ppp[2].ppp  txPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetSentToLower
 attr title  "packets transmitted, vector(packetBytes)"
-vector 177  ClientServerNetwork.client[1].ppp[0].ppp  rxPkOk:vector(packetBytes)  ETV
+vector 118  ClientServerNetwork.client[2].ppp[0].ppp  rxPkOk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, vector(packetBytes)"
-vector 181  ClientServerNetwork.client[1].ppp[0].ppp  passedUpPk:vector(packetBytes)  ETV
+vector 122  ClientServerNetwork.client[2].ppp[0].ppp  passedUpPk:vector(packetBytes)  ETV
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 499  ClientServerNetwork.client[1].tcp  "rcvd seq"  ETV
-vector 500  ClientServerNetwork.client[1].tcp  "rcvd ack"  ETV
-vector 494  ClientServerNetwork.client[1].tcp  "send window"  ETV
-vector 497  ClientServerNetwork.client[1].tcp  "sent seq"  ETV
-vector 501  ClientServerNetwork.client[1].tcp  "unacked bytes"  ETV
-vector 417  ClientServerNetwork.client[6].tcp  "measured RTT"  ETV
-vector 418  ClientServerNetwork.client[6].tcp  "smoothed RTT"  ETV
-vector 419  ClientServerNetwork.client[6].tcp  RTTVAR  ETV
-vector 420  ClientServerNetwork.client[6].tcp  RTO  ETV
-vector 415  ClientServerNetwork.client[6].tcp  cwnd  ETV
-vector 406  ClientServerNetwork.client[6].tcp  "rcvd dupAcks"  ETV
-vector 441  ClientServerNetwork.client[0].tcp  "measured RTT"  ETV
-vector 442  ClientServerNetwork.client[0].tcp  "smoothed RTT"  ETV
-vector 443  ClientServerNetwork.client[0].tcp  RTTVAR  ETV
-vector 444  ClientServerNetwork.client[0].tcp  RTO  ETV
-vector 439  ClientServerNetwork.client[0].tcp  cwnd  ETV
-vector 430  ClientServerNetwork.client[0].tcp  "rcvd dupAcks"  ETV
-vector 231  ClientServerNetwork.client[4].ppp[0].ppp  rxPkOk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkOk
-attr title  "packets received OK, vector(packetBytes)"
-vector 235  ClientServerNetwork.client[4].ppp[0].ppp  passedUpPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToUpper
-attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 523  ClientServerNetwork.client[4].tcp  "rcvd seq"  ETV
-vector 524  ClientServerNetwork.client[4].tcp  "rcvd ack"  ETV
-vector 518  ClientServerNetwork.client[4].tcp  "send window"  ETV
-vector 521  ClientServerNetwork.client[4].tcp  "sent seq"  ETV
-vector 525  ClientServerNetwork.client[4].tcp  "unacked bytes"  ETV
-vector 130  ClientServerNetwork.router.ppp[9].ppp  rxPkOk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkOk
-attr title  "packets received OK, vector(packetBytes)"
-vector 134  ClientServerNetwork.router.ppp[9].ppp  passedUpPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToUpper
-attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 571  ClientServerNetwork.server.tcp  "rcvd seq"  ETV
-vector 572  ClientServerNetwork.server.tcp  "rcvd ack"  ETV
-vector 568  ClientServerNetwork.server.tcp  "advertised window"  ETV
-vector 566  ClientServerNetwork.server.tcp  "send window"  ETV
-vector 581  ClientServerNetwork.server.tcp  tcpRcvQueueBytes  ETV
-vector 567  ClientServerNetwork.server.tcp  "receive window"  ETV
-vector 570  ClientServerNetwork.server.tcp  "sent ack"  ETV
-vector 124  ClientServerNetwork.router.ppp[9].queue  rcvdPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr title  "received packets, vector(packetBytes)"
-vector 126  ClientServerNetwork.router.ppp[9].queue  queueingTime:vector  ETV
-attr interpolationmode  none
-attr title  "queueing time, vector"
-vector 133  ClientServerNetwork.router.ppp[9].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetReceivedFromUpper
-attr title  "packets received from higher layer, vector(packetBytes)"
-vector 129  ClientServerNetwork.router.ppp[9].ppp  txPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToLower
-attr title  "packets transmitted, vector(packetBytes)"
-vector 477  ClientServerNetwork.server.tcp  "unacked bytes"  ETV
-vector 549  ClientServerNetwork.server.tcp  "unacked bytes"  ETV
-vector 321  ClientServerNetwork.client[9].ppp[0].ppp  rxPkOk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkOk
-attr title  "packets received OK, vector(packetBytes)"
-vector 325  ClientServerNetwork.client[9].ppp[0].ppp  passedUpPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToUpper
-attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 595  ClientServerNetwork.client[9].tcp  "rcvd seq"  ETV
-vector 596  ClientServerNetwork.client[9].tcp  "rcvd ack"  ETV
-vector 590  ClientServerNetwork.client[9].tcp  "send window"  ETV
-vector 593  ClientServerNetwork.client[9].tcp  "sent seq"  ETV
-vector 597  ClientServerNetwork.client[9].tcp  "unacked bytes"  ETV
+vector 248  ClientServerNetwork.client[2].tcp  "rcvd seq"  ETV
+vector 249  ClientServerNetwork.client[2].tcp  "rcvd ack"  ETV
+vector 243  ClientServerNetwork.client[2].tcp  "send window"  ETV
+vector 246  ClientServerNetwork.client[2].tcp  "sent seq"  ETV
+vector 250  ClientServerNetwork.client[2].tcp  "unacked bytes"  ETV
+vector 190  ClientServerNetwork.server.tcp  "measured RTT"  ETV
+vector 191  ClientServerNetwork.server.tcp  "smoothed RTT"  ETV
+vector 192  ClientServerNetwork.server.tcp  RTTVAR  ETV
+vector 193  ClientServerNetwork.server.tcp  RTO  ETV
+vector 188  ClientServerNetwork.server.tcp  cwnd  ETV
+vector 226  ClientServerNetwork.server.tcp  "unacked bytes"  ETV
+vector 227  ClientServerNetwork.server.tcp  "rcvd dupAcks"  ETV
+vector 222  ClientServerNetwork.server.tcp  "sent seq"  ETV
+vector 262  ClientServerNetwork.client[2].tcp  "measured RTT"  ETV
+vector 263  ClientServerNetwork.client[2].tcp  "smoothed RTT"  ETV
+vector 264  ClientServerNetwork.client[2].tcp  RTTVAR  ETV
+vector 265  ClientServerNetwork.client[2].tcp  RTO  ETV
+vector 260  ClientServerNetwork.client[2].tcp  cwnd  ETV
+vector 251  ClientServerNetwork.client[2].tcp  "rcvd dupAcks"  ETV
+vector 238  ClientServerNetwork.server.tcp  "measured RTT"  ETV
+vector 239  ClientServerNetwork.server.tcp  "smoothed RTT"  ETV
+vector 240  ClientServerNetwork.server.tcp  RTTVAR  ETV
+vector 241  ClientServerNetwork.server.tcp  RTO  ETV
+vector 236  ClientServerNetwork.server.tcp  cwnd  ETV
+7	20	0.000838571379	44
+7	71	0.000941257263	44
+7	94	0.000969721379	40
+7	97	0.000969721379	264
+7	155	0.001072407263	40
+7	158	0.001072407263	274
+7	218	0.001298627633	44
+7	239	0.001302990129	40
+7	313	0.001413676013	40
+7	336	0.001429777633	40
+7	339	0.001429777633	284
+7	398	0.001779046383	40
+9	20	0.000838571379	0
+9	71	0.000941257263	0
+9	94	0.000969721379	0
+9	98	0.000970455754	7.34375e-07
+9	155	0.001072407263	0
+9	159	0.001073141638	7.34375e-07
+9	218	0.001298627633	0
+9	239	0.001302990129	0
+9	313	0.001413676013	0
+9	336	0.001429777633	0
+9	340	0.001430512008	7.34375e-07
+9	398	0.001779046383	0
+10	0	0	0
+10	97	0.000969721379	1
+10	98	0.000970455754	0
+10	158	0.001072407263	1
+10	159	0.001073141638	0
+10	339	0.001429777633	1
+10	340	0.001430512008	0
+11	0	0	0
+11	21	0.000838571379	1
+11	22	0.000839368254	0
+11	72	0.000941257263	1
+11	73	0.000942054138	0
+11	96	0.000969721379	1
+11	98	0.000970455754	0
+11	99	0.000970455754	1
+11	105	0.000974690129	0
+11	157	0.001072407263	1
+11	159	0.001073141638	0
+11	160	0.001073141638	1
+11	166	0.001077532263	0
+11	219	0.001298627633	1
+11	220	0.001299424508	0
+11	240	0.001302990129	1
+11	241	0.001303724504	0
+11	314	0.001413676013	1
+11	315	0.001414410388	0
+11	338	0.001429777633	1
+11	340	0.001430512008	0
+11	341	0.001430512008	1
+11	347	0.001435058883	0
+11	399	0.001779046383	1
+11	400	0.001779780758	0
+12	21	0.000838571379	51
+12	72	0.000941257263	51
+12	96	0.000969721379	47
+12	99	0.000970455754	271
+12	157	0.001072407263	47
+12	160	0.001073141638	281
+12	219	0.001298627633	51
+12	240	0.001302990129	47
+12	314	0.001413676013	47
+12	338	0.001429777633	47
+12	341	0.001430512008	291
+12	399	0.001779046383	47
+13	15	0.000838571379	51
+13	55	0.000920702629	47
+13	66	0.000941257263	51
+13	86	0.000969721379	61
+13	136	0.001023388513	47
+13	147	0.001072407263	61
+13	203	0.001265390129	47
+13	213	0.001298627633	51
+13	233	0.001302990129	47
+13	285	0.001376076013	47
+13	296	0.001380758883	47
+13	307	0.001413676013	47
+13	328	0.001429777633	61
+13	382	0.001741446383	47
+13	392	0.001779046383	47
+16	21	0.000838571379	44
+16	72	0.000941257263	44
+16	96	0.000969721379	40
+16	99	0.000970455754	264
+16	157	0.001072407263	40
+16	160	0.001073141638	274
+16	219	0.001298627633	44
+16	240	0.001302990129	40
+16	314	0.001413676013	40
+16	338	0.001429777633	40
+16	341	0.001430512008	284
+16	399	0.001779046383	40
+17	15	0.000838571379	44
+17	55	0.000920702629	40
+17	66	0.000941257263	44
+17	86	0.000969721379	54
+17	136	0.001023388513	40
+17	147	0.001072407263	54
+17	203	0.001265390129	40
+17	213	0.001298627633	44
+17	233	0.001302990129	40
+17	285	0.001376076013	40
+17	296	0.001380758883	40
+17	307	0.001413676013	40
+17	328	0.001429777633	54
+17	382	0.001741446383	40
+17	392	0.001779046383	40
+25	26	0.000840368254	44
+25	103	0.000971455754	40
+25	109	0.000975690129	264
+25	245	0.001304724504	40
+27	26	0.000840368254	0
+27	103	0.000971455754	0
+27	123	0.001009055754	3.3365625e-05
+27	245	0.001304724504	0
+28	0	0	0
+28	109	0.000975690129	1
+28	123	0.001009055754	0
+29	0	0	0
+29	27	0.000840368254	1
+29	28	0.000881168254	0
+29	104	0.000971455754	1
+29	123	0.001009055754	0
+29	124	0.001009055754	1
+29	176	0.001225855754	0
+29	246	0.001304724504	1
+29	273	0.001342324504	0
+30	27	0.000840368254	51
+30	104	0.000971455754	47
+30	124	0.001009055754	271
+30	246	0.001304724504	47
+31	9	0.000836774504	51
+31	49	0.000918968254	47
+31	80	0.000967768254	61
+31	197	0.001263655754	47
+31	227	0.001301255754	47
+34	27	0.000840368254	44
+34	104	0.000971455754	40
+34	124	0.001009055754	264
+34	246	0.001304724504	40
+35	9	0.000836774504	44
+35	49	0.000918968254	40
+35	80	0.000967768254	54
+35	197	0.001263655754	40
+35	227	0.001301255754	40
+36	77	0.000943054138	44
+36	164	0.001074141638	40
+36	170	0.001078532263	274
+36	319	0.001415410388	40
+38	77	0.000943054138	0
+38	164	0.001074141638	0
+38	171	0.001111741638	3.3209375e-05
+38	319	0.001415410388	0
+39	0	0	0
+39	170	0.001078532263	1
+39	171	0.001111741638	0
+40	0	0	0
+40	78	0.000943054138	1
+40	110	0.000983854138	0
+40	165	0.001074141638	1
+40	171	0.001111741638	0
+40	172	0.001111741638	1
+40	247	0.001336541638	0
+40	320	0.001415410388	1
+40	352	0.001453010388	0
+41	78	0.000943054138	51
+41	165	0.001074141638	47
+41	172	0.001111741638	281
+41	320	0.001415410388	47
+42	60	0.000939460388	51
+42	130	0.001021654138	47
+42	141	0.001070454138	61
+42	279	0.001374341638	47
+42	301	0.001411941638	47
+45	78	0.000943054138	44
+45	165	0.001074141638	40
+45	172	0.001111741638	274
+45	320	0.001415410388	40
+46	60	0.000939460388	44
+46	130	0.001021654138	40
+46	141	0.001070454138	54
+46	279	0.001374341638	40
+46	301	0.001411941638	40
+47	224	0.001300424508	44
+47	345	0.001431512008	40
+47	351	0.001436058883	284
+47	404	0.001780780758	40
+49	224	0.001300424508	0
+49	345	0.001431512008	0
+49	356	0.001469112008	3.3053125e-05
+49	404	0.001780780758	0
+50	0	0	0
+50	351	0.001436058883	1
+50	356	0.001469112008	0
+51	0	0	0
+51	225	0.001300424508	1
+51	260	0.001341224508	0
+51	346	0.001431512008	1
+51	356	0.001469112008	0
+51	357	0.001469112008	1
+51	361	0.001701912008	0
+51	405	0.001780780758	1
+51	406	0.001818380758	0
+52	225	0.001300424508	51
+52	346	0.001431512008	47
+52	357	0.001469112008	291
+52	405	0.001780780758	47
+53	207	0.001296830758	51
+53	290	0.001379024508	47
+53	322	0.001427824508	61
+53	376	0.001739712008	47
+53	386	0.001777312008	47
+56	225	0.001300424508	44
+56	346	0.001431512008	40
+56	357	0.001469112008	284
+56	405	0.001780780758	40
+57	207	0.001296830758	44
+57	290	0.001379024508	40
+57	322	0.001427824508	54
+57	376	0.001739712008	40
+57	386	0.001777312008	40
+58	12	0.000836774504	44
+58	52	0.000918968254	40
+58	63	0.000939460388	44
+58	83	0.000967768254	54
+58	133	0.001021654138	40
+58	144	0.001070454138	54
+58	200	0.001263655754	40
+58	210	0.001296830758	44
+58	230	0.001301255754	40
+58	282	0.001374341638	40
+58	293	0.001379024508	40
+58	304	0.001411941638	40
+58	325	0.001427824508	54
+58	379	0.001739712008	40
+58	389	0.001777312008	40
+60	12	0.000836774504	0
+60	52	0.000918968254	0
+60	63	0.000939460388	0
+60	83	0.000967768254	0
+60	133	0.001021654138	0
+60	144	0.001070454138	0
+60	200	0.001263655754	0
+60	210	0.001296830758	0
+60	230	0.001301255754	0
+60	282	0.001374341638	0
+60	293	0.001379024508	0
+60	304	0.001411941638	0
+60	325	0.001427824508	0
+60	379	0.001739712008	0
+60	389	0.001777312008	0
+61	0	0	0
+62	0	0	0
+62	13	0.000836774504	1
+62	14	0.000837571379	0
+62	53	0.000918968254	1
+62	54	0.000919702629	0
+62	64	0.000939460388	1
+62	65	0.000940257263	0
+62	84	0.000967768254	1
+62	85	0.000968721379	0
+62	134	0.001021654138	1
+62	135	0.001022388513	0
+62	145	0.001070454138	1
+62	146	0.001071407263	0
+62	201	0.001263655754	1
+62	202	0.001264390129	0
+62	211	0.001296830758	1
+62	212	0.001297627633	0
+62	231	0.001301255754	1
+62	232	0.001301990129	0
+62	283	0.001374341638	1
+62	284	0.001375076013	0
+62	294	0.001379024508	1
+62	295	0.001379758883	0
+62	305	0.001411941638	1
+62	306	0.001412676013	0
+62	326	0.001427824508	1
+62	327	0.001428777633	0
+62	380	0.001739712008	1
+62	381	0.001740446383	0
+62	390	0.001777312008	1
+62	391	0.001778046383	0
+63	13	0.000836774504	51
+63	53	0.000918968254	47
+63	64	0.000939460388	51
+63	84	0.000967768254	61
+63	134	0.001021654138	47
+63	145	0.001070454138	61
+63	201	0.001263655754	47
+63	211	0.001296830758	51
+63	231	0.001301255754	47
+63	283	0.001374341638	47
+63	294	0.001379024508	47
+63	305	0.001411941638	47
+63	326	0.001427824508	61
+63	380	0.001739712008	47
+63	390	0.001777312008	47
+64	23	0.000840368254	51
+64	74	0.000943054138	51
+64	100	0.000971455754	47
+64	106	0.000975690129	271
+64	161	0.001074141638	47
+64	167	0.001078532263	281
+64	221	0.001300424508	51
+64	242	0.001304724504	47
+64	316	0.001415410388	47
+64	342	0.001431512008	47
+64	348	0.001436058883	291
+64	401	0.001780780758	47
+67	13	0.000836774504	44
+67	53	0.000918968254	40
+67	64	0.000939460388	44
+67	84	0.000967768254	54
+67	134	0.001021654138	40
+67	145	0.001070454138	54
+67	201	0.001263655754	40
+67	211	0.001296830758	44
+67	231	0.001301255754	40
+67	283	0.001374341638	40
+67	294	0.001379024508	40
+67	305	0.001411941638	40
+67	326	0.001427824508	54
+67	380	0.001739712008	40
+67	390	0.001777312008	40
+68	23	0.000840368254	44
+68	74	0.000943054138	44
+68	100	0.000971455754	40
+68	106	0.000975690129	264
+68	161	0.001074141638	40
+68	167	0.001078532263	274
+68	221	0.001300424508	44
+68	242	0.001304724504	40
+68	316	0.001415410388	40
+68	342	0.001431512008	40
+68	348	0.001436058883	284
+68	401	0.001780780758	40
+76	6	0.000795874504	44
+76	36	0.000881268254	40
+76	40	0.000881268254	54
+76	185	0.001225955754	40
+76	188	0.001225955754	40
+78	6	0.000795874504	0
+78	36	0.000881268254	0
+78	47	0.000918868254	3.76e-05
+78	185	0.001225955754	0
+78	195	0.001263555754	3.76e-05
+79	0	0	0
+79	40	0.000881268254	1
+79	47	0.000918868254	0
+79	188	0.001225955754	1
+79	195	0.001263555754	0
+80	0	0	0
+80	7	0.000795874504	1
+80	8	0.000836674504	0
+80	38	0.000881268254	1
+80	47	0.000918868254	0
+80	48	0.000918868254	1
+80	79	0.000967668254	0
+80	187	0.001225955754	1
+80	195	0.001263555754	0
+80	196	0.001263555754	1
+80	226	0.001301155754	0
+81	7	0.000795874504	51
+81	38	0.000881268254	47
+81	48	0.000918868254	61
+81	187	0.001225955754	47
+81	196	0.001263555754	47
+82	29	0.000881268254	51
+82	125	0.001009155754	47
+82	177	0.001225955754	271
+82	274	0.001342424504	47
+85	7	0.000795874504	44
+85	38	0.000881268254	40
+85	48	0.000918868254	54
+85	187	0.001225955754	40
+85	196	0.001263555754	40
+86	29	0.000881268254	44
+86	125	0.001009155754	40
+86	177	0.001225955754	264
+86	274	0.001342424504	40
+94	45	0.000898560388	44
+94	118	0.000983954138	40
+94	122	0.000983954138	54
+94	256	0.001336641638	40
+94	259	0.001336641638	40
+96	45	0.000898560388	0
+96	118	0.000983954138	0
+96	128	0.001021554138	3.76e-05
+96	256	0.001336641638	0
+96	277	0.001374241638	3.76e-05
+97	0	0	0
+97	122	0.000983954138	1
+97	128	0.001021554138	0
+97	259	0.001336641638	1
+97	277	0.001374241638	0
+98	0	0	0
+98	46	0.000898560388	1
+98	59	0.000939360388	0
+98	120	0.000983954138	1
+98	128	0.001021554138	0
+98	129	0.001021554138	1
+98	140	0.001070354138	0
+98	258	0.001336641638	1
+98	277	0.001374241638	0
+98	278	0.001374241638	1
+98	300	0.001411841638	0
+99	46	0.000898560388	51
+99	120	0.000983954138	47
+99	129	0.001021554138	61
+99	258	0.001336641638	47
+99	278	0.001374241638	47
+100	111	0.000983954138	51
+100	173	0.001111841638	47
+100	248	0.001336641638	281
+100	353	0.001453110388	47
+103	46	0.000898560388	44
+103	120	0.000983954138	40
+103	129	0.001021554138	54
+103	258	0.001336641638	40
+103	278	0.001374241638	40
+104	111	0.000983954138	44
+104	173	0.001111841638	40
+104	248	0.001336641638	274
+104	353	0.001453110388	40
+112	193	0.001255930758	44
+112	268	0.001341324508	40
+112	272	0.001341324508	54
+112	370	0.001702012008	40
+112	373	0.001702012008	40
+114	193	0.001255930758	0
+114	268	0.001341324508	0
+114	288	0.001378924508	3.76e-05
+114	370	0.001702012008	0
+114	374	0.001739612008	3.76e-05
+115	0	0	0
+115	272	0.001341324508	1
+115	288	0.001378924508	0
+115	373	0.001702012008	1
+115	374	0.001739612008	0
+116	0	0	0
+116	194	0.001255930758	1
+116	206	0.001296730758	0
+116	270	0.001341324508	1
+116	288	0.001378924508	0
+116	289	0.001378924508	1
+116	321	0.001427724508	0
+116	372	0.001702012008	1
+116	374	0.001739612008	0
+116	375	0.001739612008	1
+116	385	0.001777212008	0
+117	194	0.001255930758	51
+117	270	0.001341324508	47
+117	289	0.001378924508	61
+117	372	0.001702012008	47
+117	375	0.001739612008	47
+118	261	0.001341324508	51
+118	358	0.001469212008	47
+118	362	0.001702012008	291
+118	407	0.001818480758	47
+121	194	0.001255930758	44
+121	270	0.001341324508	40
+121	289	0.001378924508	54
+121	372	0.001702012008	40
+121	375	0.001739612008	40
+122	261	0.001341324508	44
+122	358	0.001469212008	40
+122	362	0.001702012008	284
+122	407	0.001818480758	40
+123	17	0.000838571379	7504
+123	57	0.000920702629	7504
+123	205	0.001265390129	7504
+124	17	0.000838571379	7504
+124	88	0.000969721379	7504
+124	91	0.000969721379	7504
+124	235	0.001302990129	7504
+125	17	0.000838571379	7703
+125	17	0.000838571379	7703
+125	88	0.000969721379	7717
+125	91	0.000969721379	7717
+125	235	0.001302990129	7718
+126	91	0.000969721379	210
+127	17	0.000838571379	199
+127	88	0.000969721379	213
+127	91	0.000969721379	213
+127	235	0.001302990129	214
+128	17	0.000838571379	198
+128	57	0.000920702629	199
+128	88	0.000969721379	199
+128	205	0.001265390129	213
+128	235	0.001302990129	213
+129	17	0.000838571379	0
+129	57	0.000920702629	210
+129	88	0.000969721379	210
+129	205	0.001265390129	434
+129	235	0.001302990129	434
+130	57	0.000920702629	0
+130	91	0.000969721379	224
+130	205	0.001265390129	0
+131	88	0.000969721379	0
+131	205	0.001265390129	0
+131	235	0.001302990129	0
+138	17	0.000838571379	0
+138	88	0.000969721379	0
+138	88	0.000969721379	0
+138	91	0.000969721379	0
+138	235	0.001302990129	0
+140	205	0.001265390129	1072
+142	205	0.001265390129	0.00029566875
+143	205	0.001265390129	3.6958593e-05
+144	205	0.001265390129	0.656286958594
+145	205	0.001265390129	2.625184792969
+147	31	0.000881268254	7504
+147	127	0.001009155754	7504
+147	276	0.001342424504	7504
+148	3	0.000795874504	7504
+148	31	0.000881268254	7504
+148	35	0.000881268254	7504
+148	179	0.001225955754	7504
+148	182	0.001225955754	7504
+149	3	0.000795874504	7504
+149	31	0.000881268254	7714
+149	31	0.000881268254	7714
+149	35	0.000881268254	7714
+149	179	0.001225955754	7938
+149	182	0.001225955754	7938
+150	35	0.000881268254	199
+151	3	0.000795874504	0
+151	31	0.000881268254	210
+151	35	0.000881268254	210
+151	179	0.001225955754	434
+151	182	0.001225955754	434
+152	31	0.000881268254	209
+152	127	0.001009155754	210
+152	179	0.001225955754	210
+152	276	0.001342424504	434
+153	31	0.000881268254	199
+153	127	0.001009155754	213
+153	179	0.001225955754	213
+153	276	0.001342424504	214
+154	35	0.000881268254	14
+154	127	0.001009155754	0
+154	182	0.001225955754	1
+154	276	0.001342424504	0
+155	127	0.001009155754	0
+155	179	0.001225955754	0
+155	276	0.001342424504	0
+162	3	0.000795874504	0
+162	31	0.000881268254	0
+162	35	0.000881268254	0
+162	179	0.001225955754	0
+162	179	0.001225955754	0
+162	182	0.001225955754	0
+164	127	0.001009155754	1072
+164	276	0.001342424504	1608
+166	127	0.001009155754	0.0001278875
+167	127	0.001009155754	1.5985937e-05
+168	127	0.001009155754	0.656265985938
+169	127	0.001009155754	2.625079929689
+171	68	0.000941257263	7504
+171	138	0.001023388513	7504
+171	287	0.001376076013	7504
+172	68	0.000941257263	7504
+172	149	0.001072407263	7504
+172	152	0.001072407263	7504
+172	309	0.001413676013	7504
+173	68	0.000941257263	7729
+173	68	0.000941257263	7729
+173	149	0.001072407263	7743
+173	152	0.001072407263	7743
+173	309	0.001413676013	7744
+174	152	0.001072407263	236
+175	68	0.000941257263	225
+175	149	0.001072407263	239
+175	152	0.001072407263	239
+175	309	0.001413676013	240
+176	68	0.000941257263	224
+176	138	0.001023388513	225
+176	149	0.001072407263	225
+176	287	0.001376076013	239
+176	309	0.001413676013	239
+177	68	0.000941257263	0
+177	138	0.001023388513	236
+177	149	0.001072407263	236
+177	287	0.001376076013	470
+177	309	0.001413676013	470
+178	138	0.001023388513	0
+178	152	0.001072407263	234
+178	287	0.001376076013	0
+179	149	0.001072407263	0
+179	287	0.001376076013	0
+179	309	0.001413676013	0
+186	68	0.000941257263	0
+186	149	0.001072407263	0
+186	149	0.001072407263	0
+186	152	0.001072407263	0
+186	309	0.001413676013	0
+188	287	0.001376076013	1072
+190	287	0.001376076013	0.00030366875
+191	287	0.001376076013	3.7958593e-05
+192	287	0.001376076013	0.656287958594
+193	287	0.001376076013	2.625189792969
+195	113	0.000983954138	7504
+195	175	0.001111841638	7504
+195	355	0.001453110388	7504
+196	42	0.000898560388	7504
+196	113	0.000983954138	7504
+196	117	0.000983954138	7504
+196	250	0.001336641638	7504
+196	253	0.001336641638	7504
+197	42	0.000898560388	7504
+197	113	0.000983954138	7740
+197	113	0.000983954138	7740
+197	117	0.000983954138	7740
+197	250	0.001336641638	7974
+197	253	0.001336641638	7974
+198	117	0.000983954138	225
+199	42	0.000898560388	0
+199	113	0.000983954138	236
+199	117	0.000983954138	236
+199	250	0.001336641638	470
+199	253	0.001336641638	470
+200	113	0.000983954138	235
+200	175	0.001111841638	236
+200	250	0.001336641638	236
+200	355	0.001453110388	470
+201	113	0.000983954138	225
+201	175	0.001111841638	239
+201	250	0.001336641638	239
+201	355	0.001453110388	240
+202	117	0.000983954138	14
+202	175	0.001111841638	0
+202	253	0.001336641638	1
+202	355	0.001453110388	0
+203	175	0.001111841638	0
+203	250	0.001336641638	0
+203	355	0.001453110388	0
+210	42	0.000898560388	0
+210	113	0.000983954138	0
+210	117	0.000983954138	0
+210	250	0.001336641638	0
+210	250	0.001336641638	0
+210	253	0.001336641638	0
+212	175	0.001111841638	1072
+212	355	0.001453110388	1608
+214	175	0.001111841638	0.0001278875
+215	175	0.001111841638	1.5985937e-05
+216	175	0.001111841638	0.656265985938
+217	175	0.001111841638	2.625079929689
+219	215	0.001298627633	7504
+219	298	0.001380758883	7504
+219	384	0.001741446383	7504
+220	215	0.001298627633	7504
+220	330	0.001429777633	7504
+220	333	0.001429777633	7504
+220	394	0.001779046383	7504
+221	215	0.001298627633	7818
+221	215	0.001298627633	7818
+221	330	0.001429777633	7832
+221	333	0.001429777633	7832
+221	394	0.001779046383	7833
+222	333	0.001429777633	325
+223	215	0.001298627633	314
+223	330	0.001429777633	328
+223	333	0.001429777633	328
+223	394	0.001779046383	329
+224	215	0.001298627633	313
+224	298	0.001380758883	314
+224	330	0.001429777633	314
+224	384	0.001741446383	328
+224	394	0.001779046383	328
+225	215	0.001298627633	0
+225	298	0.001380758883	325
+225	330	0.001429777633	325
+225	384	0.001741446383	569
+225	394	0.001779046383	569
+226	298	0.001380758883	0
+226	333	0.001429777633	244
+226	384	0.001741446383	0
+227	330	0.001429777633	0
+227	384	0.001741446383	0
+227	394	0.001779046383	0
+234	215	0.001298627633	0
+234	330	0.001429777633	0
+234	330	0.001429777633	0
+234	333	0.001429777633	0
+234	394	0.001779046383	0
+236	384	0.001741446383	1072
+238	384	0.001741446383	0.00031166875
+239	384	0.001741446383	3.8958593e-05
+240	384	0.001741446383	0.656288958594
+241	384	0.001741446383	2.625194792969
+243	263	0.001341324508	7504
+243	360	0.001469212008	7504
+243	409	0.001818480758	7504
+244	190	0.001255930758	7504
+244	263	0.001341324508	7504
+244	267	0.001341324508	7504
+244	364	0.001702012008	7504
+244	367	0.001702012008	7504
+245	190	0.001255930758	7504
+245	263	0.001341324508	7829
+245	263	0.001341324508	7829
+245	267	0.001341324508	7829
+245	364	0.001702012008	8073
+245	367	0.001702012008	8073
+246	267	0.001341324508	314
+247	190	0.001255930758	0
+247	263	0.001341324508	325
+247	267	0.001341324508	325
+247	364	0.001702012008	569
+247	367	0.001702012008	569
+248	263	0.001341324508	324
+248	360	0.001469212008	325
+248	364	0.001702012008	325
+248	409	0.001818480758	569
+249	263	0.001341324508	314
+249	360	0.001469212008	328
+249	364	0.001702012008	328
+249	409	0.001818480758	329
+250	267	0.001341324508	14
+250	360	0.001469212008	0
+250	367	0.001702012008	1
+250	409	0.001818480758	0
+251	360	0.001469212008	0
+251	364	0.001702012008	0
+251	409	0.001818480758	0
+258	190	0.001255930758	0
+258	263	0.001341324508	0
+258	267	0.001341324508	0
+258	364	0.001702012008	0
+258	364	0.001702012008	0
+258	367	0.001702012008	0
+260	360	0.001469212008	1072
+260	409	0.001818480758	1608
+262	360	0.001469212008	0.0001278875
+263	360	0.001469212008	1.5985937e-05
+264	360	0.001469212008	0.656265985938
+265	360	0.001469212008	2.625079929689
