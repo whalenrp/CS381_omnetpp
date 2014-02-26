@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scave:Analysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:scave="http://www.omnetpp.org/omnetpp/scave">
+  <inputs>
+    <inputs name="/CS381_ClientServer/simulations/results/General-*.vec"/>
+    <inputs name="/CS381_ClientServer/simulations/results/General-*.sca"/>
+  </inputs>
+  <datasets>
+    <datasets name="test">
+      <items xsi:type="scave:Add" filterPattern="file(/CS381_ClientServer/simulations/results/General-0.sca) AND attr:configname(General) AND attr:runnumber(0) AND module(ClientServerNetwork.server.ppp[0].queue) AND name(&quot;rcvdPk:sum(packetBytes)&quot;)"/>
+      <items xsi:type="scave:Add" filterPattern="file(/CS381_ClientServer/simulations/results/General-0.sca) AND attr:configname(General) AND attr:runnumber(0) AND module(ClientServerNetwork.server.ppp[0].ppp) AND name(&quot;rcvdPkFromHL:sum(packetBytes)&quot;)"/>
+      <items xsi:type="scave:Add" filterPattern="file(/CS381_ClientServer/simulations/results/General-0.sca) AND attr:configname(General) AND attr:runnumber(0) AND module(ClientServerNetwork.server.ppp[0].ppp) AND name(&quot;txPk:sum(packetBytes)&quot;)"/>
+      <items xsi:type="scave:HistogramChart"/>
+      <items xsi:type="scave:HistogramChart" name=""/>
+    </datasets>
+  </datasets>
+  <chartSheets>
+    <chartSheets name="default" charts="//@datasets/@datasets.0/@items.3 //@datasets/@datasets.0/@items.4"/>
+  </chartSheets>
+</scave:Analysis>

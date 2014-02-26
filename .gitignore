@@ -1,0 +1,10 @@
+
+# Omnetpp specific files
+.cproject
+.project
+.nedfolders
+.oppbuildspec
+
+
+# Generated files
+out
