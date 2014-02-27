@@ -1,9 +1,9 @@
 
 # Omnetpp specific files
-.cproject
-.project
-.nedfolders
-.oppbuildspec
+#.cproject
+#.project
+#.nedfolders
+#.oppbuildspec
 
 
 # Generated files
