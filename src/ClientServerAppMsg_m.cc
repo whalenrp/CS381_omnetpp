@@ -37,6 +37,8 @@ EXECUTE_ON_STARTUP(
     if (!e) enums.getInstance()->add(e = new cEnum("CS_MSG_TYPE"));
     e->insert(CS_REQUEST, "CS_REQUEST");
     e->insert(CS_RESPONSE, "CS_RESPONSE");
+    e->insert(PEER_REQUEST, "PEER_REQUEST");
+    e->insert(PEER_RESPONSE, "PEER_RESPONSE");
 );
 
 Register_Class(CS_Packet);
@@ -866,6 +868,418 @@ void *CS_RespDescriptor::getFieldStructPointer(void *object, int field, int i) c
         field -= basedesc->getFieldCount(object);
     }
     CS_Resp *pp = (CS_Resp *)object; (void)pp;
+    switch (field) {
+        default: return NULL;
+    }
+}
+
+Register_Class(Peer_Req);
+
+Peer_Req::Peer_Req(const char *name, int kind) : CS_Req(name,kind)
+{
+}
+
+Peer_Req::Peer_Req(const Peer_Req& other) : CS_Req(other)
+{
+    copy(other);
+}
+
+Peer_Req::~Peer_Req()
+{
+}
+
+Peer_Req& Peer_Req::operator=(const Peer_Req& other)
+{
+    if (this==&other) return *this;
+    CS_Req::operator=(other);
+    copy(other);
+    return *this;
+}
+
+void Peer_Req::copy(const Peer_Req& other)
+{
+}
+
+void Peer_Req::parsimPack(cCommBuffer *b)
+{
+    CS_Req::parsimPack(b);
+}
+
+void Peer_Req::parsimUnpack(cCommBuffer *b)
+{
+    CS_Req::parsimUnpack(b);
+}
+
+class Peer_ReqDescriptor : public cClassDescriptor
+{
+  public:
+    Peer_ReqDescriptor();
+    virtual ~Peer_ReqDescriptor();
+
+    virtual bool doesSupport(cObject *obj) const;
+    virtual const char *getProperty(const char *propertyname) const;
+    virtual int getFieldCount(void *object) const;
+    virtual const char *getFieldName(void *object, int field) const;
+    virtual int findField(void *object, const char *fieldName) const;
+    virtual unsigned int getFieldTypeFlags(void *object, int field) const;
+    virtual const char *getFieldTypeString(void *object, int field) const;
+    virtual const char *getFieldProperty(void *object, int field, const char *propertyname) const;
+    virtual int getArraySize(void *object, int field) const;
+
+    virtual std::string getFieldAsString(void *object, int field, int i) const;
+    virtual bool setFieldAsString(void *object, int field, int i, const char *value) const;
+
+    virtual const char *getFieldStructName(void *object, int field) const;
+    virtual void *getFieldStructPointer(void *object, int field, int i) const;
+};
+
+Register_ClassDescriptor(Peer_ReqDescriptor);
+
+Peer_ReqDescriptor::Peer_ReqDescriptor() : cClassDescriptor("Peer_Req", "CS_Req")
+{
+}
+
+Peer_ReqDescriptor::~Peer_ReqDescriptor()
+{
+}
+
+bool Peer_ReqDescriptor::doesSupport(cObject *obj) const
+{
+    return dynamic_cast<Peer_Req *>(obj)!=NULL;
+}
+
+const char *Peer_ReqDescriptor::getProperty(const char *propertyname) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    return basedesc ? basedesc->getProperty(propertyname) : NULL;
+}
+
+int Peer_ReqDescriptor::getFieldCount(void *object) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    return basedesc ? 0+basedesc->getFieldCount(object) : 0;
+}
+
+unsigned int Peer_ReqDescriptor::getFieldTypeFlags(void *object, int field) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->getFieldTypeFlags(object, field);
+        field -= basedesc->getFieldCount(object);
+    }
+    return 0;
+}
+
+const char *Peer_ReqDescriptor::getFieldName(void *object, int field) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->getFieldName(object, field);
+        field -= basedesc->getFieldCount(object);
+    }
+    return NULL;
+}
+
+int Peer_ReqDescriptor::findField(void *object, const char *fieldName) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    return basedesc ? basedesc->findField(object, fieldName) : -1;
+}
+
+const char *Peer_ReqDescriptor::getFieldTypeString(void *object, int field) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->getFieldTypeString(object, field);
+        field -= basedesc->getFieldCount(object);
+    }
+    return NULL;
+}
+
+const char *Peer_ReqDescriptor::getFieldProperty(void *object, int field, const char *propertyname) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->getFieldProperty(object, field, propertyname);
+        field -= basedesc->getFieldCount(object);
+    }
+    switch (field) {
+        default: return NULL;
+    }
+}
+
+int Peer_ReqDescriptor::getArraySize(void *object, int field) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->getArraySize(object, field);
+        field -= basedesc->getFieldCount(object);
+    }
+    Peer_Req *pp = (Peer_Req *)object; (void)pp;
+    switch (field) {
+        default: return 0;
+    }
+}
+
+std::string Peer_ReqDescriptor::getFieldAsString(void *object, int field, int i) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->getFieldAsString(object,field,i);
+        field -= basedesc->getFieldCount(object);
+    }
+    Peer_Req *pp = (Peer_Req *)object; (void)pp;
+    switch (field) {
+        default: return "";
+    }
+}
+
+bool Peer_ReqDescriptor::setFieldAsString(void *object, int field, int i, const char *value) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->setFieldAsString(object,field,i,value);
+        field -= basedesc->getFieldCount(object);
+    }
+    Peer_Req *pp = (Peer_Req *)object; (void)pp;
+    switch (field) {
+        default: return false;
+    }
+}
+
+const char *Peer_ReqDescriptor::getFieldStructName(void *object, int field) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->getFieldStructName(object, field);
+        field -= basedesc->getFieldCount(object);
+    }
+    return NULL;
+}
+
+void *Peer_ReqDescriptor::getFieldStructPointer(void *object, int field, int i) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->getFieldStructPointer(object, field, i);
+        field -= basedesc->getFieldCount(object);
+    }
+    Peer_Req *pp = (Peer_Req *)object; (void)pp;
+    switch (field) {
+        default: return NULL;
+    }
+}
+
+Register_Class(Peer_Resp);
+
+Peer_Resp::Peer_Resp(const char *name, int kind) : CS_Resp(name,kind)
+{
+}
+
+Peer_Resp::Peer_Resp(const Peer_Resp& other) : CS_Resp(other)
+{
+    copy(other);
+}
+
+Peer_Resp::~Peer_Resp()
+{
+}
+
+Peer_Resp& Peer_Resp::operator=(const Peer_Resp& other)
+{
+    if (this==&other) return *this;
+    CS_Resp::operator=(other);
+    copy(other);
+    return *this;
+}
+
+void Peer_Resp::copy(const Peer_Resp& other)
+{
+}
+
+void Peer_Resp::parsimPack(cCommBuffer *b)
+{
+    CS_Resp::parsimPack(b);
+}
+
+void Peer_Resp::parsimUnpack(cCommBuffer *b)
+{
+    CS_Resp::parsimUnpack(b);
+}
+
+class Peer_RespDescriptor : public cClassDescriptor
+{
+  public:
+    Peer_RespDescriptor();
+    virtual ~Peer_RespDescriptor();
+
+    virtual bool doesSupport(cObject *obj) const;
+    virtual const char *getProperty(const char *propertyname) const;
+    virtual int getFieldCount(void *object) const;
+    virtual const char *getFieldName(void *object, int field) const;
+    virtual int findField(void *object, const char *fieldName) const;
+    virtual unsigned int getFieldTypeFlags(void *object, int field) const;
+    virtual const char *getFieldTypeString(void *object, int field) const;
+    virtual const char *getFieldProperty(void *object, int field, const char *propertyname) const;
+    virtual int getArraySize(void *object, int field) const;
+
+    virtual std::string getFieldAsString(void *object, int field, int i) const;
+    virtual bool setFieldAsString(void *object, int field, int i, const char *value) const;
+
+    virtual const char *getFieldStructName(void *object, int field) const;
+    virtual void *getFieldStructPointer(void *object, int field, int i) const;
+};
+
+Register_ClassDescriptor(Peer_RespDescriptor);
+
+Peer_RespDescriptor::Peer_RespDescriptor() : cClassDescriptor("Peer_Resp", "CS_Resp")
+{
+}
+
+Peer_RespDescriptor::~Peer_RespDescriptor()
+{
+}
+
+bool Peer_RespDescriptor::doesSupport(cObject *obj) const
+{
+    return dynamic_cast<Peer_Resp *>(obj)!=NULL;
+}
+
+const char *Peer_RespDescriptor::getProperty(const char *propertyname) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    return basedesc ? basedesc->getProperty(propertyname) : NULL;
+}
+
+int Peer_RespDescriptor::getFieldCount(void *object) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    return basedesc ? 0+basedesc->getFieldCount(object) : 0;
+}
+
+unsigned int Peer_RespDescriptor::getFieldTypeFlags(void *object, int field) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->getFieldTypeFlags(object, field);
+        field -= basedesc->getFieldCount(object);
+    }
+    return 0;
+}
+
+const char *Peer_RespDescriptor::getFieldName(void *object, int field) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->getFieldName(object, field);
+        field -= basedesc->getFieldCount(object);
+    }
+    return NULL;
+}
+
+int Peer_RespDescriptor::findField(void *object, const char *fieldName) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    return basedesc ? basedesc->findField(object, fieldName) : -1;
+}
+
+const char *Peer_RespDescriptor::getFieldTypeString(void *object, int field) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->getFieldTypeString(object, field);
+        field -= basedesc->getFieldCount(object);
+    }
+    return NULL;
+}
+
+const char *Peer_RespDescriptor::getFieldProperty(void *object, int field, const char *propertyname) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->getFieldProperty(object, field, propertyname);
+        field -= basedesc->getFieldCount(object);
+    }
+    switch (field) {
+        default: return NULL;
+    }
+}
+
+int Peer_RespDescriptor::getArraySize(void *object, int field) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->getArraySize(object, field);
+        field -= basedesc->getFieldCount(object);
+    }
+    Peer_Resp *pp = (Peer_Resp *)object; (void)pp;
+    switch (field) {
+        default: return 0;
+    }
+}
+
+std::string Peer_RespDescriptor::getFieldAsString(void *object, int field, int i) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->getFieldAsString(object,field,i);
+        field -= basedesc->getFieldCount(object);
+    }
+    Peer_Resp *pp = (Peer_Resp *)object; (void)pp;
+    switch (field) {
+        default: return "";
+    }
+}
+
+bool Peer_RespDescriptor::setFieldAsString(void *object, int field, int i, const char *value) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->setFieldAsString(object,field,i,value);
+        field -= basedesc->getFieldCount(object);
+    }
+    Peer_Resp *pp = (Peer_Resp *)object; (void)pp;
+    switch (field) {
+        default: return false;
+    }
+}
+
+const char *Peer_RespDescriptor::getFieldStructName(void *object, int field) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->getFieldStructName(object, field);
+        field -= basedesc->getFieldCount(object);
+    }
+    return NULL;
+}
+
+void *Peer_RespDescriptor::getFieldStructPointer(void *object, int field, int i) const
+{
+    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount(object))
+            return basedesc->getFieldStructPointer(object, field, i);
+        field -= basedesc->getFieldCount(object);
+    }
+    Peer_Resp *pp = (Peer_Resp *)object; (void)pp;
     switch (field) {
         default: return NULL;
     }

@@ -32,6 +32,8 @@ import inet.applications.ITCPApp;
 simple ClientApp like ITCPApp
 {
     parameters:
+        string localAddress = default("");	// decides what is our addr. May be left empty ("")
+        int localPort = default(1000);         		// port number to listen on
         string myID = default("client");			// some name assigned to me (for debugging purposes)
         string connectAddress = default("server");	// server address (may be symbolic)
         int connectPort = default(1000);			// port number of the server to connect to

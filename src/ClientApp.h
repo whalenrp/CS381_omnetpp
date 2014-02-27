@@ -52,6 +52,7 @@ private:
     std::set<std::string> peerList;
     static int uniqueIdCounter;
     int uniqueId;
+    string localAddress_;
 
     // queue used to track the Round Trip Time on the packets.
     // This makes the assumption packets are delivered in order..
@@ -134,7 +135,9 @@ protected:
     }
     //@}
 
-    virtual void sendPacketToPeers();
+    virtual void sendPacketToPeer(TCPSocket* socket);
+
+    virtual void sendResponse(int connId, const char *id, unsigned long size);
 
 };
 

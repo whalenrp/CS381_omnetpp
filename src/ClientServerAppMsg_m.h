@@ -21,12 +21,16 @@
  * enum CS_MSG_TYPE {
  *     CS_REQUEST = 0;
  *     CS_RESPONSE = 1;
+ *     PEER_REQUEST = 2; 
+ *     PEER_RESPONSE = 3;
  * };
  * </pre>
  */
 enum CS_MSG_TYPE {
     CS_REQUEST = 0,
-    CS_RESPONSE = 1
+    CS_RESPONSE = 1,
+    PEER_REQUEST = 2,
+    PEER_RESPONSE = 3
 };
 
 /**
@@ -162,6 +166,70 @@ class CS_Resp : public ::CS_Packet
 
 inline void doPacking(cCommBuffer *b, CS_Resp& obj) {obj.parsimPack(b);}
 inline void doUnpacking(cCommBuffer *b, CS_Resp& obj) {obj.parsimUnpack(b);}
+
+/**
+ * Class generated from <tt>ClientServerAppMsg.msg</tt> by opp_msgc.
+ * <pre>
+ * packet Peer_Req extends CS_Req {};
+ * </pre>
+ */
+class Peer_Req : public ::CS_Req
+{
+  protected:
+
+  private:
+    void copy(const Peer_Req& other);
+
+  protected:
+    // protected and unimplemented operator==(), to prevent accidental usage
+    bool operator==(const Peer_Req&);
+
+  public:
+    Peer_Req(const char *name=NULL, int kind=0);
+    Peer_Req(const Peer_Req& other);
+    virtual ~Peer_Req();
+    Peer_Req& operator=(const Peer_Req& other);
+    virtual Peer_Req *dup() const {return new Peer_Req(*this);}
+    virtual void parsimPack(cCommBuffer *b);
+    virtual void parsimUnpack(cCommBuffer *b);
+
+    // field getter/setter methods
+};
+
+inline void doPacking(cCommBuffer *b, Peer_Req& obj) {obj.parsimPack(b);}
+inline void doUnpacking(cCommBuffer *b, Peer_Req& obj) {obj.parsimUnpack(b);}
+
+/**
+ * Class generated from <tt>ClientServerAppMsg.msg</tt> by opp_msgc.
+ * <pre>
+ * packet Peer_Resp extends CS_Resp {};
+ * </pre>
+ */
+class Peer_Resp : public ::CS_Resp
+{
+  protected:
+
+  private:
+    void copy(const Peer_Resp& other);
+
+  protected:
+    // protected and unimplemented operator==(), to prevent accidental usage
+    bool operator==(const Peer_Resp&);
+
+  public:
+    Peer_Resp(const char *name=NULL, int kind=0);
+    Peer_Resp(const Peer_Resp& other);
+    virtual ~Peer_Resp();
+    Peer_Resp& operator=(const Peer_Resp& other);
+    virtual Peer_Resp *dup() const {return new Peer_Resp(*this);}
+    virtual void parsimPack(cCommBuffer *b);
+    virtual void parsimUnpack(cCommBuffer *b);
+
+    // field getter/setter methods
+};
+
+inline void doPacking(cCommBuffer *b, Peer_Resp& obj) {obj.parsimPack(b);}
+inline void doUnpacking(cCommBuffer *b, Peer_Resp& obj) {obj.parsimUnpack(b);}
 
 
 #endif // _CLIENTSERVERAPPMSG_M_H_

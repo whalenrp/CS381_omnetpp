@@ -24,6 +24,8 @@
 enum CS_MSG_TYPE {
     CS_REQUEST = 0;
     CS_RESPONSE = 1;
+    PEER_REQUEST = 2; 
+    PEER_RESPONSE = 3;
 };
 
 // I am describing a base class for the packet so that it can be extended by subclasses. The 
@@ -50,3 +52,7 @@ packet CS_Resp extends CS_Packet
     char data [];	    // contents of the file (for now we have commented this out)
     int uniqueId;
 };
+
+packet Peer_Req extends CS_Req {};
+
+packet Peer_Resp extends CS_Resp {};

@@ -18,12 +18,13 @@
 Define_Module(ClientApp)
 ;
 
+
 int ClientApp::uniqueIdCounter = 0;
 
 // constructor
 ClientApp::ClientApp(void) :
         myID_(), server_(), connectPort_(0), fileSize_(1024), // 1 Kilo bytes
-        socket_(NULL), mPacketTimes(), peerList(), uniqueId(uniqueIdCounter++) {
+        socket_(NULL), peerList(), uniqueId(uniqueIdCounter++), mPacketTimes() {
     // nothing
 }
 
@@ -60,6 +61,36 @@ void ClientApp::initialize(int stage) {
     setStatusString ("waiting");
 
     packetArrivalSignal = registerSignal("arrival");
+
+    /*****
+     * New Stuff
+     */
+    // obtain the values of parameters
+    string localAddress = this->par("localAddress").stringValue();
+    int localPort = this->par("localPort");
+
+    // create a new socket for the listening role
+    this->socket_ = new TCPSocket();
+    this->socket_->setDataTransferMode(TCP_TRANSFER_OBJECT);
+
+    // In the server role, we bind ourselves to the well-defined port and IP address on which
+    // we listen for incoming connections
+    this->socket_->bind(
+            localAddress.length() ?
+                    IPvXAddressResolver().resolve(localAddress.c_str()) :
+                    IPvXAddress(), localPort);
+
+    // register ourselves as the callback object
+    this->socket_->setCallbackObject(this, NULL);  // send the flag
+
+    // do not forget to set the outgoing gate
+    this->socket_->setOutputGate(gate("tcpOut"));
+
+    // now listen for incoming connections.  This version is the forking version where
+    // upon every new incoming connection, a new socket is created.
+    this->socket_->listen();
+
+    this->socketMap_.addSocket(socket_);
 }
 
     /** This is the all-encompassing event handling function. It is our responsibility to
@@ -73,11 +104,6 @@ void ClientApp::handleMessage(cMessage *msg) {
     this->handleTimer (msg);
     else {  // not a timer; must be a packet.
 
-        // Because we are a client and we should have already called "connect" to the server as part of the
-        // handleTimer, the possibilities are that this is an incoming ack for the connection establishment,
-        // or a response to our request, or a connection close message. Unlike the server, we do not have
-        // any socket map with us. We just have one socket: the one to talk to the server, which should have
-        // been created as a result of the timer above.
 
         // make sure first that we are dealing with a TCP command (and not something else) because otherwise
         // we do not know how to handle that kind of message
@@ -91,10 +117,36 @@ void ClientApp::handleMessage(cMessage *msg) {
             throw cRuntimeError("ClientApp::handleMessage: no connection yet to server");
         }
 
+        /*****
+         * New Stuff
+         */
+        TCPSocket* socket = socketMap_.findSocketFor(msg);
+        if (!socket){
+            socket = new TCPSocket(msg);
+
+            // register ourselves as the callback object
+            socket->setCallbackObject(this, NULL);
+
+            // do not forget to set the outgoing gate
+            socket->setOutputGate(gate("tcpOut"));
+
+            // another thing I learned the hard way is that we must set up the data trasnfer
+            // mode for this new socket
+            socket->setDataTransferMode(this->socket_->getDataTransferMode());
+
+            // now save this socket in our map
+            this->socketMap_.addSocket(socket);
+        }
+        socket->processMessage(msg);
+
+        /****
+         * End new stuff
+         */
+
         // Everything seems fine. So process the message. Note that the processMessage is a method defined on the
         // TCPSocket class. Internally it will make the appropriate callback on the overridden methods of the
         // TCPSocketCallbackInterface object
-        this->socket_->processMessage (msg);
+//        this->socket_->processMessage (msg);
     }
 }
 
@@ -119,7 +171,8 @@ void ClientApp::handleTimer(cMessage *msg) {
     delete msg;
 
     // make connection to our server using our helper method
-    this->connect (this->server_.c_str());
+    this->socket_ = this->connect (this->server_.c_str());
+    socketMap_.addSocket(socket_);
 }
 
     /*************************************************/
@@ -153,26 +206,64 @@ void ClientApp::socketDataArrived(int connID, void *, cPacket *msg, bool) {
     EV<< "=== Client: " << this->myID_
     << " received socketDataArrived message. ===" << endl;
 
-    // incoming request may be of different types. The only thing we can handle as a client
-    // is a response from the server and nothing else.
-    CS_Resp *response = dynamic_cast<CS_Resp *> (msg);
-    if (!response) {
-        EV << "Arriving packet is not of type CS_Resp" << endl;
-    } else {
-        setStatusString ("Response Arrived");
-
-        EV << "Arriving packet: Responder ID = " << response->getId ()
-        << ", packet size = " << response->getDataArraySize () << endl;
-
-        this->handleResponse (response);
+    // incoming request may be of different types.
+    // incoming request may be of different types
+    CS_Packet *packet = dynamic_cast<CS_Packet *>(msg);
+    if (!packet) {
+        EV << "DYNAMIC CAST TO CS_Packet FAILED\n";
+        return;
     }
 
-    // cleanup the incoming message after it is handled.
-    delete response;
+    switch ((CS_MSG_TYPE) packet->getType()) {
+        case CS_REQUEST: // We will never receive a request from the tracker here
+        {
+            break;
+        }
+        case CS_RESPONSE: // We will received updates from the tracker here with peer info.
+        {
+            CS_Resp *response = dynamic_cast<CS_Resp *> (msg);
+            if (!response) {
+                EV << "Arriving packet is not of type CS_Resp" << endl;
+            } else {
+                setStatusString ("Response Arrived");
 
-    // now that the response to our file request is received, our job is done
-    // and so we close the connection
-    this->close ();
+                EV << "Arriving packet: Responder ID = " << response->getId ()
+                << ", packet size = " << response->getDataArraySize () << endl;
+
+                this->handleResponse (response);
+            }
+            break;
+        }
+        case PEER_REQUEST:
+        {
+            EV << "******************** Peer Request *******************" << endl;
+            Peer_Req *req = dynamic_cast<Peer_Req *>(msg);
+            if (!req) {
+                EV << "Arriving packet is not of type CS_Req\n";
+            } else {
+                setStatusString("Request");
+                EV << "****************** Arriving Peer packet: Requestor ID = " << req->getId()
+                        << ", Requested file size = " << req->getFilesize() << endl;
+
+                // now send a response
+                this->sendResponse(connID, this->localAddress_.c_str(), req->getFilesize());
+            }
+            break;
+        }
+        case PEER_RESPONSE:
+        {
+            // now that the response to our file request is received, our job is done
+            // and so we close the connection
+            this->close ();
+            break;
+        }
+
+    }
+    // cleanup the incoming message after it is handled.
+    delete msg;
+
+
+
 }
 
 void ClientApp::socketPeerClosed(int connID, void *) {
@@ -216,32 +307,32 @@ TCPSocket* ClientApp::connect(const char* serverAddr) {
 
     // we allocate a socket to be used for actively connecting to the server and
     // transferring data over it. Note, we are a client.
-    this->socket_ = new TCPSocket ();
-    if (!this->socket_) {
+    TCPSocket* tempSocket = new TCPSocket ();
+    if (!tempSocket) {
         throw cRuntimeError("ClientApp::initialize: failed to create connecting socket");
     }
 
     // don't forget to set the output gate for this socket. I learned it the
     // hard way :-(
-    this->socket_->setOutputGate (gate ("tcpOut"));
+    tempSocket->setOutputGate (gate ("tcpOut"));
 
     // another thing I learned the hard way is that we must set up the data transfer
     // mode for this new socket
-    this->socket_->setDataTransferMode (TCP_TRANSFER_OBJECT);
+    tempSocket->setDataTransferMode (TCP_TRANSFER_OBJECT);
 
     // issue a connect request. Note that as an active entity, we must connect to the server's address
     // and its port
-    this->socket_->connect (IPvXAddressResolver().resolve (serverAddr),
+    tempSocket->connect (IPvXAddressResolver().resolve (serverAddr),
             this->connectPort_);
 
     // do not forget to set ourselves as the callback on this new socket.
-    this->socket_->setCallbackObject (this, NULL);// we don't send any metadata as second param
+    tempSocket->setCallbackObject (this, NULL);// we don't send any metadata as second param
 
     // debugging
     EV << "+++ Client: " << this->myID_ << " created a new socket with "
-    << "connection ID = " << this->socket_->getConnectionId () << " ===" << endl;
+    << "connection ID = " << tempSocket->getConnectionId () << " ===" << endl;
 
-    return socket_;
+    return tempSocket;
 }
 
 // close the client
@@ -306,10 +397,22 @@ void ClientApp::handleResponse(CS_Resp *response) {
         while (!ss.eof()){
             std::string peer;
             ss >> peer;
-            peerList.insert(peer);
+
+            TCPSocket* socket = this->connect (peer.c_str());
+            if (socket->getLocalAddress().str() != socket->getRemoteAddress().str()){
+                peerList.insert(peer);
+
+                EV << endl;
+                EV << "-------------CONNECTING TO PEER-------------"<< endl;
+                EV << "-- local: " << socket->getLocalAddress().str() << endl;
+                EV << "-- remote: " << socket->getRemoteAddress().str() << endl;
+
+                this->sendPacketToPeer(socket);
+                socketMap_.addSocket(socket);
+            }
         }
     }else{ // Received a response from a client
-        sendPacketToPeers();
+        //sendPacketToPeers();
 
     }
     EV << endl;
@@ -323,12 +426,52 @@ void ClientApp::setStatusString(const char *s) {
     }
 }
 
-void ClientApp::sendPacketToPeers(){
-    CS_Req * req = new CS_Req();
-    req->setType((int)CS_REQUEST);
+void ClientApp::sendPacketToPeer(TCPSocket* socket){
+    Peer_Req * req = new Peer_Req();
+    req->setType((int)PEER_REQUEST);
     req->setUniqueId(this->uniqueId);
     req->setId (this->myID_.c_str ());
+    req->setUniqueId(uniqueId);
     req->setFilesize(8);
 
+    // need to set the byte length else nothing gets sent as I found the hard way. I am assuming
+    // this is the size of the application packet
+    req->setByteLength (sizeof (CS_MSG_TYPE)
+            + this->myID_.length()
+            + sizeof (this->fileSize_));
+
+    socket->send (req);
+}
+
+// send a response
+void ClientApp::sendResponse(int connId, const char *id, unsigned long size) {
+    EV << "sendResponse(" << connId << ", size=" << size << ")\n";
+
+    // this is a hack because the TCPSocketMap does not allow us to search based on
+    // connection ID. So we have to take a circuitous route to get to the socket
+    cMessage *temp_msg = new cMessage("temp");
+    TCPCommand *temp_cmd = new TCPCommand();
+    temp_cmd->setConnId(connId);
+    temp_msg->setControlInfo(temp_cmd);
+
+    TCPSocket *socket = this->socketMap_.findSocketFor(temp_msg);
+    if (!socket) {
+        EV << "Cannot find socket to send request\n";
+    } else {
+        Peer_Resp *resp = new Peer_Resp();
+        resp->setType((int) PEER_RESPONSE);
+        resp->setId(id);
+        resp->setUniqueId(uniqueId);
+        resp->setDataArraySize(size);
+        // need to set the byte length else nothing gets sent as I found the hard way
+
+        // TODO What should this size be?
+        resp->setByteLength(sizeof(CS_Resp) + size);
+        resp->setUniqueId(uniqueId);
+        socket->send(resp);
+    }
+
+    // cleanup
+    delete temp_msg;
 }
 
