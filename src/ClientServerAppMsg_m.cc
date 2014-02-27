@@ -284,6 +284,7 @@ CS_Req::CS_Req(const char *name, int kind) : CS_Packet(name,kind)
 {
     this->id_var = 0;
     this->filesize_var = 0;
+    this->uniqueId_var = 0;
 }
 
 CS_Req::CS_Req(const CS_Req& other) : CS_Packet(other)
@@ -307,6 +308,7 @@ void CS_Req::copy(const CS_Req& other)
 {
     this->id_var = other.id_var;
     this->filesize_var = other.filesize_var;
+    this->uniqueId_var = other.uniqueId_var;
 }
 
 void CS_Req::parsimPack(cCommBuffer *b)
@@ -314,6 +316,7 @@ void CS_Req::parsimPack(cCommBuffer *b)
     CS_Packet::parsimPack(b);
     doPacking(b,this->id_var);
     doPacking(b,this->filesize_var);
+    doPacking(b,this->uniqueId_var);
 }
 
 void CS_Req::parsimUnpack(cCommBuffer *b)
@@ -321,6 +324,7 @@ void CS_Req::parsimUnpack(cCommBuffer *b)
     CS_Packet::parsimUnpack(b);
     doUnpacking(b,this->id_var);
     doUnpacking(b,this->filesize_var);
+    doUnpacking(b,this->uniqueId_var);
 }
 
 const char * CS_Req::getId() const
@@ -341,6 +345,16 @@ int CS_Req::getFilesize() const
 void CS_Req::setFilesize(int filesize)
 {
     this->filesize_var = filesize;
+}
+
+int CS_Req::getUniqueId() const
+{
+    return uniqueId_var;
+}
+
+void CS_Req::setUniqueId(int uniqueId)
+{
+    this->uniqueId_var = uniqueId;
 }
 
 class CS_ReqDescriptor : public cClassDescriptor
@@ -390,7 +404,7 @@ const char *CS_ReqDescriptor::getProperty(const char *propertyname) const
 int CS_ReqDescriptor::getFieldCount(void *object) const
 {
     cClassDescriptor *basedesc = getBaseClassDescriptor();
-    return basedesc ? 2+basedesc->getFieldCount(object) : 2;
+    return basedesc ? 3+basedesc->getFieldCount(object) : 3;
 }
 
 unsigned int CS_ReqDescriptor::getFieldTypeFlags(void *object, int field) const
@@ -404,8 +418,9 @@ unsigned int CS_ReqDescriptor::getFieldTypeFlags(void *object, int field) const
     static unsigned int fieldTypeFlags[] = {
         FD_ISEDITABLE,
         FD_ISEDITABLE,
+        FD_ISEDITABLE,
     };
-    return (field>=0 && field<2) ? fieldTypeFlags[field] : 0;
+    return (field>=0 && field<3) ? fieldTypeFlags[field] : 0;
 }
 
 const char *CS_ReqDescriptor::getFieldName(void *object, int field) const
@@ -419,8 +434,9 @@ const char *CS_ReqDescriptor::getFieldName(void *object, int field) const
     static const char *fieldNames[] = {
         "id",
         "filesize",
+        "uniqueId",
     };
-    return (field>=0 && field<2) ? fieldNames[field] : NULL;
+    return (field>=0 && field<3) ? fieldNames[field] : NULL;
 }
 
 int CS_ReqDescriptor::findField(void *object, const char *fieldName) const
@@ -429,6 +445,7 @@ int CS_ReqDescriptor::findField(void *object, const char *fieldName) const
     int base = basedesc ? basedesc->getFieldCount(object) : 0;
     if (fieldName[0]=='i' && strcmp(fieldName, "id")==0) return base+0;
     if (fieldName[0]=='f' && strcmp(fieldName, "filesize")==0) return base+1;
+    if (fieldName[0]=='u' && strcmp(fieldName, "uniqueId")==0) return base+2;
     return basedesc ? basedesc->findField(object, fieldName) : -1;
 }
 
@@ -443,8 +460,9 @@ const char *CS_ReqDescriptor::getFieldTypeString(void *object, int field) const
     static const char *fieldTypeStrings[] = {
         "string",
         "int",
+        "int",
     };
-    return (field>=0 && field<2) ? fieldTypeStrings[field] : NULL;
+    return (field>=0 && field<3) ? fieldTypeStrings[field] : NULL;
 }
 
 const char *CS_ReqDescriptor::getFieldProperty(void *object, int field, const char *propertyname) const
@@ -486,6 +504,7 @@ std::string CS_ReqDescriptor::getFieldAsString(void *object, int field, int i) c
     switch (field) {
         case 0: return oppstring2string(pp->getId());
         case 1: return long2string(pp->getFilesize());
+        case 2: return long2string(pp->getUniqueId());
         default: return "";
     }
 }
@@ -502,6 +521,7 @@ bool CS_ReqDescriptor::setFieldAsString(void *object, int field, int i, const ch
     switch (field) {
         case 0: pp->setId((value)); return true;
         case 1: pp->setFilesize(string2long(value)); return true;
+        case 2: pp->setUniqueId(string2long(value)); return true;
         default: return false;
     }
 }
@@ -517,8 +537,9 @@ const char *CS_ReqDescriptor::getFieldStructName(void *object, int field) const
     static const char *fieldStructNames[] = {
         NULL,
         NULL,
+        NULL,
     };
-    return (field>=0 && field<2) ? fieldStructNames[field] : NULL;
+    return (field>=0 && field<3) ? fieldStructNames[field] : NULL;
 }
 
 void *CS_ReqDescriptor::getFieldStructPointer(void *object, int field, int i) const
@@ -542,6 +563,7 @@ CS_Resp::CS_Resp(const char *name, int kind) : CS_Packet(name,kind)
     this->id_var = 0;
     data_arraysize = 0;
     this->data_var = 0;
+    this->uniqueId_var = 0;
 }
 
 CS_Resp::CS_Resp(const CS_Resp& other) : CS_Packet(other)
@@ -572,6 +594,7 @@ void CS_Resp::copy(const CS_Resp& other)
     data_arraysize = other.data_arraysize;
     for (unsigned int i=0; i<data_arraysize; i++)
         this->data_var[i] = other.data_var[i];
+    this->uniqueId_var = other.uniqueId_var;
 }
 
 void CS_Resp::parsimPack(cCommBuffer *b)
@@ -580,6 +603,7 @@ void CS_Resp::parsimPack(cCommBuffer *b)
     doPacking(b,this->id_var);
     b->pack(data_arraysize);
     doPacking(b,this->data_var,data_arraysize);
+    doPacking(b,this->uniqueId_var);
 }
 
 void CS_Resp::parsimUnpack(cCommBuffer *b)
@@ -594,6 +618,7 @@ void CS_Resp::parsimUnpack(cCommBuffer *b)
         this->data_var = new char[data_arraysize];
         doUnpacking(b,this->data_var,data_arraysize);
     }
+    doUnpacking(b,this->uniqueId_var);
 }
 
 const char * CS_Resp::getId() const
@@ -634,6 +659,16 @@ void CS_Resp::setData(unsigned int k, char data)
 {
     if (k>=data_arraysize) throw cRuntimeError("Array of size %d indexed by %d", data_arraysize, k);
     this->data_var[k] = data;
+}
+
+int CS_Resp::getUniqueId() const
+{
+    return uniqueId_var;
+}
+
+void CS_Resp::setUniqueId(int uniqueId)
+{
+    this->uniqueId_var = uniqueId;
 }
 
 class CS_RespDescriptor : public cClassDescriptor
@@ -683,7 +718,7 @@ const char *CS_RespDescriptor::getProperty(const char *propertyname) const
 int CS_RespDescriptor::getFieldCount(void *object) const
 {
     cClassDescriptor *basedesc = getBaseClassDescriptor();
-    return basedesc ? 2+basedesc->getFieldCount(object) : 2;
+    return basedesc ? 3+basedesc->getFieldCount(object) : 3;
 }
 
 unsigned int CS_RespDescriptor::getFieldTypeFlags(void *object, int field) const
@@ -697,8 +732,9 @@ unsigned int CS_RespDescriptor::getFieldTypeFlags(void *object, int field) const
     static unsigned int fieldTypeFlags[] = {
         FD_ISEDITABLE,
         FD_ISARRAY | FD_ISEDITABLE,
+        FD_ISEDITABLE,
     };
-    return (field>=0 && field<2) ? fieldTypeFlags[field] : 0;
+    return (field>=0 && field<3) ? fieldTypeFlags[field] : 0;
 }
 
 const char *CS_RespDescriptor::getFieldName(void *object, int field) const
@@ -712,8 +748,9 @@ const char *CS_RespDescriptor::getFieldName(void *object, int field) const
     static const char *fieldNames[] = {
         "id",
         "data",
+        "uniqueId",
     };
-    return (field>=0 && field<2) ? fieldNames[field] : NULL;
+    return (field>=0 && field<3) ? fieldNames[field] : NULL;
 }
 
 int CS_RespDescriptor::findField(void *object, const char *fieldName) const
@@ -722,6 +759,7 @@ int CS_RespDescriptor::findField(void *object, const char *fieldName) const
     int base = basedesc ? basedesc->getFieldCount(object) : 0;
     if (fieldName[0]=='i' && strcmp(fieldName, "id")==0) return base+0;
     if (fieldName[0]=='d' && strcmp(fieldName, "data")==0) return base+1;
+    if (fieldName[0]=='u' && strcmp(fieldName, "uniqueId")==0) return base+2;
     return basedesc ? basedesc->findField(object, fieldName) : -1;
 }
 
@@ -736,8 +774,9 @@ const char *CS_RespDescriptor::getFieldTypeString(void *object, int field) const
     static const char *fieldTypeStrings[] = {
         "string",
         "char",
+        "int",
     };
-    return (field>=0 && field<2) ? fieldTypeStrings[field] : NULL;
+    return (field>=0 && field<3) ? fieldTypeStrings[field] : NULL;
 }
 
 const char *CS_RespDescriptor::getFieldProperty(void *object, int field, const char *propertyname) const
@@ -780,6 +819,7 @@ std::string CS_RespDescriptor::getFieldAsString(void *object, int field, int i) 
     switch (field) {
         case 0: return oppstring2string(pp->getId());
         case 1: return long2string(pp->getData(i));
+        case 2: return long2string(pp->getUniqueId());
         default: return "";
     }
 }
@@ -796,6 +836,7 @@ bool CS_RespDescriptor::setFieldAsString(void *object, int field, int i, const c
     switch (field) {
         case 0: pp->setId((value)); return true;
         case 1: pp->setData(i,string2long(value)); return true;
+        case 2: pp->setUniqueId(string2long(value)); return true;
         default: return false;
     }
 }
@@ -811,8 +852,9 @@ const char *CS_RespDescriptor::getFieldStructName(void *object, int field) const
     static const char *fieldStructNames[] = {
         NULL,
         NULL,
+        NULL,
     };
-    return (field>=0 && field<2) ? fieldStructNames[field] : NULL;
+    return (field>=0 && field<3) ? fieldStructNames[field] : NULL;
 }
 
 void *CS_RespDescriptor::getFieldStructPointer(void *object, int field, int i) const

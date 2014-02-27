@@ -1,15 +1,15 @@
-file 36233 1393453295                                           
+file 36233 1393461617                                           
 version 2
-run General-0-20140226-16:20:31-96164
+run General-0-20140226-18:39:33-97586
 attr configname General
-attr datetime 20140226-16:20:31
+attr datetime 20140226-18:39:33
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvars2 $repetition=0
 attr measurement ""
 attr network ClientServerNetwork
-attr processid 96164
+attr processid 97586
 attr repetition 0
 attr replication #0
 attr resultdir results

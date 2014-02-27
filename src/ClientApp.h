@@ -47,6 +47,11 @@ private:
     int connectPort_;        // port of the server to connect to
     int fileSize_;           // size of file to be transferred.
     TCPSocket *socket_;   // our socket that talks to the server
+    TCPSocket *listening_socket; // our socket that listens for requests.
+    TCPSocketMap socketMap_; // maps of sockets we maintain
+    std::set<std::string> peerList;
+    static int uniqueIdCounter;
+    int uniqueId;
 
     // queue used to track the Round Trip Time on the packets.
     // This makes the assumption packets are delivered in order..
@@ -85,7 +90,7 @@ protected:
 
     //@{
     /** Issues an active OPEN to the address/port given as module parameters */
-    virtual void connect();
+    TCPSocket* connect(const char*);
 
     /** Issues CLOSE command */
     virtual void close(void);
@@ -128,6 +133,8 @@ protected:
         delete status;
     }
     //@}
+
+    virtual void sendPacketToPeers();
 
 };
 

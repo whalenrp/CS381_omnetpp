@@ -74,6 +74,7 @@ inline void doUnpacking(cCommBuffer *b, CS_Packet& obj) {obj.parsimUnpack(b);}
  * {
  *     string	id;		        
  *     int filesize;	        
+ *     int uniqueId;
  * };
  * </pre>
  */
@@ -82,6 +83,7 @@ class CS_Req : public ::CS_Packet
   protected:
     opp_string id_var;
     int filesize_var;
+    int uniqueId_var;
 
   private:
     void copy(const CS_Req& other);
@@ -104,6 +106,8 @@ class CS_Req : public ::CS_Packet
     virtual void setId(const char * id);
     virtual int getFilesize() const;
     virtual void setFilesize(int filesize);
+    virtual int getUniqueId() const;
+    virtual void setUniqueId(int uniqueId);
 };
 
 inline void doPacking(cCommBuffer *b, CS_Req& obj) {obj.parsimPack(b);}
@@ -117,6 +121,7 @@ inline void doUnpacking(cCommBuffer *b, CS_Req& obj) {obj.parsimUnpack(b);}
  *     string  id;			
  * 
  *     char data [];	    
+ *     int uniqueId;
  * };
  * </pre>
  */
@@ -126,6 +131,7 @@ class CS_Resp : public ::CS_Packet
     opp_string id_var;
     char *data_var; // array ptr
     unsigned int data_arraysize;
+    int uniqueId_var;
 
   private:
     void copy(const CS_Resp& other);
@@ -150,6 +156,8 @@ class CS_Resp : public ::CS_Packet
     virtual unsigned int getDataArraySize() const;
     virtual char getData(unsigned int k) const;
     virtual void setData(unsigned int k, char data);
+    virtual int getUniqueId() const;
+    virtual void setUniqueId(int uniqueId);
 };
 
 inline void doPacking(cCommBuffer *b, CS_Resp& obj) {obj.parsimPack(b);}

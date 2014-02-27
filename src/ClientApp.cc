@@ -18,10 +18,12 @@
 Define_Module(ClientApp)
 ;
 
+int ClientApp::uniqueIdCounter = 0;
+
 // constructor
 ClientApp::ClientApp(void) :
         myID_(), server_(), connectPort_(0), fileSize_(1024), // 1 Kilo bytes
-        socket_(NULL), mPacketTimes() {
+        socket_(NULL), mPacketTimes(), peerList(), uniqueId(uniqueIdCounter++) {
     // nothing
 }
 
@@ -117,7 +119,7 @@ void ClientApp::handleTimer(cMessage *msg) {
     delete msg;
 
     // make connection to our server using our helper method
-    this->connect ();
+    this->connect (this->server_.c_str());
 }
 
     /*************************************************/
@@ -208,7 +210,7 @@ void ClientApp::socketFailure(int, void *, int code) {
     /**********************************************************************/
 
 // connect to server in the active role
-void ClientApp::connect(void) {
+TCPSocket* ClientApp::connect(const char* serverAddr) {
     EV<< "=== Client: " << this->myID_ << " issuing a connect to server" << endl;
     setStatusString ("connecting"); // this is for generating the bubble in the animation
 
@@ -229,7 +231,7 @@ void ClientApp::connect(void) {
 
     // issue a connect request. Note that as an active entity, we must connect to the server's address
     // and its port
-    this->socket_->connect (IPvXAddressResolver().resolve (this->server_.c_str ()),
+    this->socket_->connect (IPvXAddressResolver().resolve (serverAddr),
             this->connectPort_);
 
     // do not forget to set ourselves as the callback on this new socket.
@@ -239,6 +241,7 @@ void ClientApp::connect(void) {
     EV << "+++ Client: " << this->myID_ << " created a new socket with "
     << "connection ID = " << this->socket_->getConnectionId () << " ===" << endl;
 
+    return socket_;
 }
 
 // close the client
@@ -283,18 +286,31 @@ void ClientApp::sendRequest(int connId) {
 
 // handle incoming response and collect statistics
 void ClientApp::handleResponse(CS_Resp *response) {
-    EV<< "=== Client: " << this->myID_ << " handleResponse. === " << endl;
+    EV<< "=== Client: " << this->uniqueId << " handleResponse. === " << endl;
 
     // Pop the earliest time from our queue and emit it as our Round Trip Time
     double rtt = difftime(std::time(0), mPacketTimes.front());
     emit(packetArrivalSignal, rtt);
     mPacketTimes.pop();
 
-    // let us print what we got
-    EV << "Client received file from server: " << response->getId ()
-    << " and a file of size " << response->getDataArraySize() << endl;
-    for (unsigned int i = 0; i < response->getDataArraySize (); ++i) {
-        EV << response->getData (i);
+
+    if (response->getUniqueId() == 0){ // Received a response from the tracker
+        // let us print what we got
+        std::stringstream ss;
+        EV << "Client received file from server: " << response->getId ()
+        << " and a file of size " << response->getDataArraySize() << endl;
+        for (unsigned int i = 0; i < response->getDataArraySize (); ++i) {
+            EV << response->getData (i);
+            ss << response->getData(i);
+        }
+        while (!ss.eof()){
+            std::string peer;
+            ss >> peer;
+            peerList.insert(peer);
+        }
+    }else{ // Received a response from a client
+        sendPacketToPeers();
+
     }
     EV << endl;
 }
@@ -305,5 +321,14 @@ void ClientApp::setStatusString(const char *s) {
         getDisplayString ().setTagArg ("t", 0, s);
         bubble (s);
     }
+}
+
+void ClientApp::sendPacketToPeers(){
+    CS_Req * req = new CS_Req();
+    req->setType((int)CS_REQUEST);
+    req->setUniqueId(this->uniqueId);
+    req->setId (this->myID_.c_str ());
+    req->setFilesize(8);
+
 }
 

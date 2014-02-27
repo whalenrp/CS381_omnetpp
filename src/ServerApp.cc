@@ -205,6 +205,7 @@ void ServerApp::sendResponse(int connId, const char *id, unsigned long size) {
 
         // TODO What should this size be?
         resp->setByteLength(sizeof(CS_Resp) + result.length());
+        resp->setUniqueId(0);
         socket->send(resp);
     }
 

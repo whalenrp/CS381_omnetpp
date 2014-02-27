@@ -39,6 +39,7 @@ packet CS_Req extends CS_Packet
 {
     string	id;		        // announce the requestor's ID
     int filesize;	        // request for a file of the specified size
+    int uniqueId;
 };
 
 // this is the response from the server
@@ -47,4 +48,5 @@ packet CS_Resp extends CS_Packet
     string  id;			// ID of the responder
 //    unsigned long size;	// size of the data	
     char data [];	    // contents of the file (for now we have commented this out)
+    int uniqueId;
 };
