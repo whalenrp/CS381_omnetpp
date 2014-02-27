@@ -29,7 +29,7 @@ package CS381_ClientServer;
 import inet.applications.ITCPApp;
 
 // our module behaves like the TCPApp. At simulation time, we provide the appropriate value.
-simple ClientApp like ITCPApp
+simple PeerApp like ITCPApp
 {
     parameters:
         string localAddress = default("");	// decides what is our addr. May be left empty ("")
@@ -52,7 +52,7 @@ simple ClientApp like ITCPApp
 }
 
 // our module behaves like the TCPApp. At simulation time, we provide the appropriate value.
-simple ServerApp like ITCPApp
+simple TrackerApp like ITCPApp
 {
     parameters:
         string localAddress = default("server");	// decides what is our addr. May be left empty ("")

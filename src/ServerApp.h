@@ -8,7 +8,7 @@ using namespace std;
 #include "TCPSocket.h"
 #include "TCPSocketMap.h"
 
-class ServerApp: public cSimpleModule, public TCPSocket::CallbackInterface {
+class TrackerApp: public cSimpleModule, public TCPSocket::CallbackInterface {
 
 private:
 

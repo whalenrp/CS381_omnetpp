@@ -1,14 +1,14 @@
 version 2
-run General-0-20140227-11:04:47-377
+run General-0-20140227-11:33:37-597
 attr configname General
-attr datetime 20140227-11:04:47
+attr datetime 20140227-11:33:37
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvars2 $repetition=0
 attr measurement ""
 attr network ClientServerNetwork
-attr processid 377
+attr processid 597
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -1802,23 +1802,23 @@ bin	0.46666666666667	0
 bin	0.5	0
 statistic ClientServerNetwork 	rtt:stats
 field count 5
-field mean 21.4
-field stddev 5.3197744313082
-field sum 107
-field sqrsum 2403
-field min 17
-field max 30
+field mean 20.4
+field stddev 4.9295030175465
+field sum 102
+field sqrsum 2178
+field min 16
+field max 28
 attr interpolationmode  none
 attr source  arrival
 attr title  "RTT, stats"
 statistic ClientServerNetwork 	rtt:histogram
 field count 5
-field mean 21.4
-field stddev 5.3197744313082
-field sum 107
-field sqrsum 2403
-field min 17
-field max 30
+field mean 20.4
+field stddev 4.9295030175465
+field sum 102
+field sqrsum 2178
+field min 16
+field max 28
 attr interpolationmode  none
 attr source  arrival
 attr title  "RTT, histogram"
@@ -1829,25 +1829,22 @@ bin	12	0
 bin	13	0
 bin	14	0
 bin	15	0
-bin	16	0
-bin	17	2
+bin	16	2
+bin	17	0
 bin	18	0
 bin	19	0
 bin	20	0
-bin	21	1
-bin	22	1
+bin	21	2
+bin	22	0
 bin	23	0
 bin	24	0
 bin	25	0
 bin	26	0
 bin	27	0
-bin	28	0
+bin	28	1
 bin	29	0
-bin	30	1
+bin	30	0
 bin	31	0
 bin	32	0
 bin	33	0
 bin	34	0
-bin	35	0
-bin	36	0
-bin	37	0

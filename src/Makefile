@@ -67,7 +67,7 @@ PROJECTRELATIVE_PATH = src
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc and .msg files
-OBJS = $O/ClientApp.o $O/ServerApp.o $O/ClientServerAppMsg_m.o
+OBJS = $O/PeerApp.o $O/ServerApp.o $O/ClientServerAppMsg_m.o
 
 # Message files
 MSGFILES = \
@@ -157,9 +157,11 @@ depend:
 	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
-$O/ClientApp.o: ClientApp.cc \
-	ClientApp.h \
+$O/ClientServerAppMsg_m.o: ClientServerAppMsg_m.cc \
+	ClientServerAppMsg_m.h
+$O/PeerApp.o: PeerApp.cc \
 	ClientServerAppMsg_m.h \
+	PeerApp.h \
 	$(INET_PROJ)/src/base/INETDefs.h \
 	$(INET_PROJ)/src/networklayer/contract/IPv4Address.h \
 	$(INET_PROJ)/src/networklayer/contract/IPv6Address.h \
@@ -168,8 +170,6 @@ $O/ClientApp.o: ClientApp.cc \
 	$(INET_PROJ)/src/transport/contract/TCPCommand_m.h \
 	$(INET_PROJ)/src/transport/contract/TCPSocket.h \
 	$(INET_PROJ)/src/transport/contract/TCPSocketMap.h
-$O/ClientServerAppMsg_m.o: ClientServerAppMsg_m.cc \
-	ClientServerAppMsg_m.h
 $O/ServerApp.o: ServerApp.cc \
 	ClientServerAppMsg_m.h \
 	ServerApp.h \
