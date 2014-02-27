@@ -248,7 +248,7 @@ void PeerApp::socketDataArrived(int connID, void *, cPacket *msg, bool) {
                         << ", Requested file size = " << req->getFilesize() << endl;
 
                 // now send a response
-                this->sendResponse(connID, this->localAddress_.c_str(), req->getFilesize());
+                this->sendResponse(connID, this->localAddress_.c_str(), 1000);
             }
             break;
         }
@@ -451,12 +451,7 @@ void PeerApp::sendResponse(int connId, const char *id, unsigned long size) {
 
     // this is a hack because the TCPSocketMap does not allow us to search based on
     // connection ID. So we have to take a circuitous route to get to the socket
-//    cMessage *temp_msg = new cMessage("temp");
-//    TCPCommand *temp_cmd = new TCPCommand();
-//    temp_cmd->setConnId(connId);
-//    temp_msg->setControlInfo(temp_cmd);
-//
-//    TCPSocket *socket = this->socketMap_.findSocketFor(temp_msg);
+
     if (!socket_) {
         EV << "Cannot find socket to send request\n";
     } else {
@@ -474,8 +469,5 @@ void PeerApp::sendResponse(int connId, const char *id, unsigned long size) {
         EV << "************** Peer sending response *****************"<< endl;
         EV << "localAddress: " << socket_->getLocalAddress() << " remoteAddress: " << socket_->getRemoteAddress() << endl;
     }
-
-    // cleanup
-    //delete temp_msg;
 }
 

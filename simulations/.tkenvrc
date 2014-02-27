@@ -1,4 +1,3 @@
 # Partial Tkenv config file -- see $HOME/.tkenvrc as well
-inspector "ClientServerNetwork" "ClientServerNetwork" "2" "717x283+5+27:normal"
 inspector "ClientServerWirelessNetwork" "ClientServerWirelessNetwork" "2" "813x283+5+27:normal"
 

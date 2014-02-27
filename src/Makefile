@@ -67,7 +67,7 @@ PROJECTRELATIVE_PATH = src
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc and .msg files
-OBJS = $O/PeerApp.o $O/ServerApp.o $O/ClientServerAppMsg_m.o
+OBJS = $O/PeerApp.o $O/TrackerApp.o $O/ClientServerAppMsg_m.o
 
 # Message files
 MSGFILES = \
@@ -170,9 +170,9 @@ $O/PeerApp.o: PeerApp.cc \
 	$(INET_PROJ)/src/transport/contract/TCPCommand_m.h \
 	$(INET_PROJ)/src/transport/contract/TCPSocket.h \
 	$(INET_PROJ)/src/transport/contract/TCPSocketMap.h
-$O/ServerApp.o: ServerApp.cc \
+$O/TrackerApp.o: TrackerApp.cc \
 	ClientServerAppMsg_m.h \
-	ServerApp.h \
+	TrackerApp.h \
 	$(INET_PROJ)/src/base/INETDefs.h \
 	$(INET_PROJ)/src/networklayer/contract/IPv4Address.h \
 	$(INET_PROJ)/src/networklayer/contract/IPv6Address.h \
