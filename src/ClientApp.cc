@@ -120,24 +120,26 @@ void ClientApp::handleMessage(cMessage *msg) {
         /*****
          * New Stuff
          */
-        TCPSocket* socket = socketMap_.findSocketFor(msg);
-        if (!socket){
-            socket = new TCPSocket(msg);
+        //TCPSocket* socket = socketMap_.findSocketFor(msg);
+        socket_ = socketMap_.findSocketFor(msg);
+        if (!socket_){
+            socket_ = new TCPSocket(msg);
 
             // register ourselves as the callback object
-            socket->setCallbackObject(this, NULL);
+            socket_->setCallbackObject(this, NULL);
 
             // do not forget to set the outgoing gate
-            socket->setOutputGate(gate("tcpOut"));
+            socket_->setOutputGate(gate("tcpOut"));
 
             // another thing I learned the hard way is that we must set up the data trasnfer
             // mode for this new socket
-            socket->setDataTransferMode(this->socket_->getDataTransferMode());
+            socket_->setDataTransferMode(TCP_TRANSFER_OBJECT);
 
             // now save this socket in our map
-            this->socketMap_.addSocket(socket);
+            this->socketMap_.addSocket(socket_);
+            this->peerList.insert(socket_->getRemoteAddress().str());
         }
-        socket->processMessage(msg);
+        socket_->processMessage(msg);
 
         /****
          * End new stuff
@@ -239,7 +241,7 @@ void ClientApp::socketDataArrived(int connID, void *, cPacket *msg, bool) {
             EV << "******************** Peer Request *******************" << endl;
             Peer_Req *req = dynamic_cast<Peer_Req *>(msg);
             if (!req) {
-                EV << "Arriving packet is not of type CS_Req\n";
+                EV << "Arriving packet is not of type Peer_Req\n";
             } else {
                 setStatusString("Request");
                 EV << "****************** Arriving Peer packet: Requestor ID = " << req->getId()
@@ -449,13 +451,13 @@ void ClientApp::sendResponse(int connId, const char *id, unsigned long size) {
 
     // this is a hack because the TCPSocketMap does not allow us to search based on
     // connection ID. So we have to take a circuitous route to get to the socket
-    cMessage *temp_msg = new cMessage("temp");
-    TCPCommand *temp_cmd = new TCPCommand();
-    temp_cmd->setConnId(connId);
-    temp_msg->setControlInfo(temp_cmd);
-
-    TCPSocket *socket = this->socketMap_.findSocketFor(temp_msg);
-    if (!socket) {
+//    cMessage *temp_msg = new cMessage("temp");
+//    TCPCommand *temp_cmd = new TCPCommand();
+//    temp_cmd->setConnId(connId);
+//    temp_msg->setControlInfo(temp_cmd);
+//
+//    TCPSocket *socket = this->socketMap_.findSocketFor(temp_msg);
+    if (!socket_) {
         EV << "Cannot find socket to send request\n";
     } else {
         Peer_Resp *resp = new Peer_Resp();
@@ -468,10 +470,12 @@ void ClientApp::sendResponse(int connId, const char *id, unsigned long size) {
         // TODO What should this size be?
         resp->setByteLength(sizeof(CS_Resp) + size);
         resp->setUniqueId(uniqueId);
-        socket->send(resp);
+        socket_->send(resp);
+        EV << "************** Peer sending response *****************"<< endl;
+        EV << "localAddress: " << socket_->getLocalAddress() << " remoteAddress: " << socket_->getRemoteAddress() << endl;
     }
 
     // cleanup
-    delete temp_msg;
+    //delete temp_msg;
 }
 
